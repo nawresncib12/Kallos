@@ -2,13 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-  --pink: #CC898B;
-  --beige: #FEE0D9;
-  --purple: #C0BCE4;
-  --blue: #B4DBFF;
-  --white: #D3DAE0;
+:root {
+  --pink-light: #FEE0D9;
+  --pink-dark: #CC898B;
+  --purple-light: #C0BCE4;
+  --purple-dark: #413C6A;
+  --blue-light: #B4DBFF;
+  --blue-dark: #3AA1FF;
+  --gray-light: #D3DAE0;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+  font-family: GFSNeohellenic;
+}
+
+@font-face {
+  font-family: "GFSNeohellenic";
+  src: url('assets/fonts/GFSNeohellenic-Regular.ttf');
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
