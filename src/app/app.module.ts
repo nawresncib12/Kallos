@@ -6,18 +6,22 @@ import { AppComponent } from './app.component';
 import { CatalogElementComponent } from './components/catalog/catalog-element/catalog-element.component';
 import { CatalogModule } from './components/catalog/catalog.module';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import { HomeComponent } from './pages/home/home.component';
+import { HomeModule } from "./components/home/home.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CatalogComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CatalogModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        CatalogComponent,
+        HomeComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        CatalogModule,
+        HomeModule
+    ]
 })
 export class AppModule { }
