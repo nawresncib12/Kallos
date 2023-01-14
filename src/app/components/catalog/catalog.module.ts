@@ -10,6 +10,9 @@ import { CatalogElementComponent } from './catalog-element/catalog-element.compo
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    CatalogElementComponent
   ]
 })
 export class CatalogModule { }
