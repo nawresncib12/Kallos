@@ -8,6 +8,7 @@ import { CatalogElementComponent } from './components/catalog/catalog-element/ca
 import { CatalogModule } from './components/catalog/catalog.module';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { TokenInterceptorProvider } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     CatalogModule,
     NoopAnimationsModule
   ],
-  providers: [],
+  providers: [TokenInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
