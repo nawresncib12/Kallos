@@ -7,11 +7,13 @@ import { CatalogElementComponent } from './components/catalog/catalog-element/ca
 import { CatalogModule } from './components/catalog/catalog.module';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CatalogComponent
+    CatalogComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
