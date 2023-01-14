@@ -1,1 +1,6 @@
-.hero {}
+.hero {
+    display: flex;
+    background-color: var(--pink);
+    height: 100vh;
+    overflow: hidden;
+}
