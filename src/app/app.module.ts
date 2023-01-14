@@ -7,21 +7,19 @@ import { CatalogElementComponent } from './components/catalog/catalog-element/ca
 import { CatalogModule } from './components/catalog/catalog.module';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { HomeComponent } from './pages/home/home.component';
-import { HomeModule } from "./components/home/home.module";
+import { HomeModule } from './components/home/home.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        CatalogComponent,
-        HomeComponent
-    ],
-    providers: [],
-    bootstrap: [AppComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        CatalogModule,
-        HomeModule
-    ]
+  declarations: [AppComponent, CatalogComponent, HomeComponent],
+  providers: [],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CatalogModule,
+    NoopAnimationsModule,
+    HomeModule,
+  ],
 })
-export class AppModule { }
+export class AppModule {}
