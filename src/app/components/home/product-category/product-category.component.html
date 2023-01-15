@@ -1,0 +1,25 @@
+<div [id]="tag" [ngStyle]="{'background-color':light}" class="min-h-screen  grid grid-cols-2-1 pl-10 sm:pl-20  pr-10 sm:pr-20 items-center">
+    <div class="relative">
+        <div class="z-20  max-text font-bold relative" [ngStyle]="{'color':dark}">
+            <h2 class="mt-10">{{title[0]}}</h2>
+            <h2 class="mt--10">{{title[1]}}</h2>
+        </div>
+        <img class="absolute top-1/2 transform -translate-y-1/2 z-0 max-w-screen mt-10" src="../../../../assets//images/{{tag}}1.png" alt="firstpic">
+        <div class="absolute top-0 flex flex-row-reverse sm:flex-row items-center right-0 sm:left-0">
+            <img class="w-[40px] sm:w-[70px] mr-5" src="../../../../assets/images/angelLogo.png" alt="angel">
+            <h1 class="font-bold text-2xl sm:text-4xl capitalize" [ngStyle]="{'color':dark}">{{tag}}</h1>
+        </div>
+    </div>
+    <div class="relative h-full border-box flex flex-wrap items-center justify-between">
+        <div class="text-4xl text-white flex flex-col h-[50%] justify-center">
+            <p class="mb-5 font-bold text-5xl" [ngStyle]="{'color':dark}">Lorem ipsum dolor sit amet, consecte.</p>
+            <app-button [color]="dark" [text]="'Buy now'"></app-button>
+        </div>
+        <div class="h-[50%] w-full flex justify-center">
+            <img class="h-full" src="../../../../assets/images/{{tag}}2.png" alt="">
+        </div>
+        <div *ngIf="next!=''" class="absolute bottom-10 right-0 ">
+            <app-scroll-down-button [color]="dark" [width]="'60px'" [height]="'60px'" [link]="next"></app-scroll-down-button>
+        </div>
+    </div>
+</div>
