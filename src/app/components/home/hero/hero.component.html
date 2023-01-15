@@ -1,11 +1,14 @@
 <div class="hero grid grid-cols-1 overflow-hidden relative h-screen">
-    <div class="z-20 flex items-center justify-center absolute w-screen h-screen opacity-0 animate-[fade_1s_ease-in-out] ">
+    <div class="z-20 flex items-center justify-center absolute w-screen h-screen opacity-0 animate-[fade_1s_ease-in-out] pointer-events-none">
         <app-app-title></app-app-title>
     </div>
-    <div class="text-white  lg:text-4xl text-2xl p-10 flex justify-center flex-col gap-10">
-        <app-app-title [ngClass]="'mb-5'"></app-app-title>
-        <p>Capturing art in our products</p>
-        <p>Since 1965 </p>
+    <div class="text-white  lg:text-4xl text-2xl p-10  flex justify-around flex-col gap-10">
+        <div class="flex justify-center flex-col gap-10 mt-10">
+            <app-app-title [ngClass]="'mb-10'"></app-app-title>
+            <p>Capturing art in our products</p>
+            <p class="mb-20">Since 1965 </p>
+        </div>
+        <app-button [text]="'Explore now'"></app-button>
     </div>
     <div class=" heroImg ">
         <img class="absolute h-full w-full z-10 " src="../../../../assets/images/heroImg.jpg " alt="heroimg ">
