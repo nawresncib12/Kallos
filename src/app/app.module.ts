@@ -9,7 +9,11 @@ import { HomeModule } from './components/home/home.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { SharedModule } from './components/shared/shared.module';
-import {MatDividerModule} from '@angular/material/divider';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginFormComponent } from './components/auth/login-form/login-form.component';
+import { RegisterFormComponent } from './components/auth/register-form/register-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,10 @@ import {MatDividerModule} from '@angular/material/divider';
     CatalogComponent,
     ProductDetailsComponent,
     HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    LoginFormComponent,
+    RegisterFormComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
@@ -26,7 +34,8 @@ import {MatDividerModule} from '@angular/material/divider';
     NoopAnimationsModule,
     SharedModule,
     HomeModule,
-    MatDividerModule
-  ]
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
 export class AppModule {}

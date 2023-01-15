@@ -1,0 +1,47 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-full">
+  <div class="mt-4 pb-6 w-full relative">
+    <input
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="Email"
+      formControlName="email"
+      email
+      required
+    />
+    <p
+      [ngClass]="{
+      'opacity-100': loginForm.controls.email.errors?.['email']
+    }"
+      class="opacity-0 text-purple-dark transition ease-in absolute bottom-0 left-0"
+    >
+      Must be a valid email.
+    </p>
+  </div>
+  <div class="mb-4 w-full">
+    <input
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="Password"
+      type="password"
+      formControlName="password"
+      required
+    />
+  </div>
+  <div class="my-4 w-full">
+    <button
+      class="text-2xl bg-transparent border-pink-light border-2 rounded-lg px-4 py-2 text-white font-bold hover:bg-pink-light hover:text-pink-dark transition duration-300 ease-in-out disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+      type="submit"
+      [disabled]="!loginForm.valid"
+    >
+      Login
+    </button>
+  </div>
+  <div>
+    <p class="text-xl text-white">
+      Don't have an account ?
+      <a
+        routerLink="/register"
+        class="text-pink-light hover:underline transition duration-300 ease-in-out"
+        >Register</a
+      >
+    </p>
+  </div>
+</form>
