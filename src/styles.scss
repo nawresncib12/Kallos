@@ -10,6 +10,8 @@
   --blue-light: #B4DBFF;
   --blue-dark: #3AA1FF;
   --gray-light: #D3DAE0;
+  --neutral: #D9BCB5;
+
 }
 
 * {
@@ -25,4 +27,36 @@ html,
 body {
   height: 100%;
   margin: 0;
+}
+
+@mixin backgroundColor($color) {
+  background-color: $color;
+}
+
+.bg-gray {
+  background-color: var(--gray-light);
+}
+
+.bg-pink {
+  background-color: var(--pink-light);
+}
+
+.bg-blue {
+  background-color: var(--blue-light);
+}
+
+.bg-purple {
+  background-color: var(--purple-light);
+}
+
+.bg-neutral {
+  background-color: var(--neutral);
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
 }

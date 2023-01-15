@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CatalogElementComponent } from './catalog-element/catalog-element.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -9,7 +10,8 @@ import { CatalogElementComponent } from './catalog-element/catalog-element.compo
     CatalogElementComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FlexLayoutModule
   ],
   exports: [
     CatalogElementComponent

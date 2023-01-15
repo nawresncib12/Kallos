@@ -7,6 +7,7 @@ import { CatalogElementComponent } from './components/catalog/catalog-element/ca
 import { CatalogModule } from './components/catalog/catalog.module';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     CatalogModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

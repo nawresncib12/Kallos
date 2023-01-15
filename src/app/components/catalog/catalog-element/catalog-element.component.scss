@@ -1,3 +1,60 @@
-.bg {
-    background-color: var(--hello-color);
+.container {
+    width: 400px;
+    height: 400px;
+    transition: 0.3s;
+
+    .content {
+        height: 400px;
+        min-height: 400px;
+
+        .image {
+            height: 90%;
+            width: 90%;
+            object-fit: cover;
+        }
+    }
+
+    .show {
+        animation: show 0.3s forwards;
+
+    }
+
+
+    .hide {
+        animation: hide 0.3s forwards;
+    }
+
+    .details {
+        transition: 0.3s;
+        min-height: 50px;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);;
+    }
+}
+
+.container:hover {
+    transform: translateY(-50px);
+    cursor: pointer;
+}
+
+@keyframes show {
+    from {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);;
+
+    }
+
+    to {
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+    }
+}
+
+@keyframes hide {
+    from {
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+
+    }
+
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);;
+
+    }
 }

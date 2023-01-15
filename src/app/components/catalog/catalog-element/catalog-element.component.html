@@ -1,0 +1,17 @@
+<div (mouseenter)="onHover=true" (mouseleave)="onHover=false" class="container m-2" fxLayout="column"
+    fxLayoutAlign="start center">
+    <div [ngClass]="{'bg-pink': category == categories.makeup,'bg-purple': category == categories.candle, 'bg-blue': category == categories.sculpt
+    ,'bg-gray': category == categories.jewlery}" fxLayout="row" fxLayoutAlign="center center"
+        class="content w-100 bg-gray w-10">
+        <img class="image" [src]="'assets/pics/'+imagePath" alt="">
+    </div>
+    <div class="details bg-white w-100 font-semibold text-lg" [ngClass]="{'show':onHover,'hide':!onHover}"
+        fxLayout="row" fxLayoutAlign="space-between flex-end">
+        <div class="mx-2" fxLayout="column" fxLayoutAlign="start start">
+            <div style="letter-spacing: 2px" class="text-sm text-gray-900">{{category}}</div>
+            <div>{{title}}</div>
+
+        </div>
+        <div class="mx-2">{{price}}$</div>
+    </div>
+</div>

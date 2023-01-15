@@ -1,1 +1,19 @@
-<app-catalog-element></app-catalog-element>
+<div class="container" fxLayout="row" fxLayoutAlign="start start">
+    <div fxLayout="column" fxLayoutAlign="start center" class="catalog-sidebar bg-gray h-100" [ngClass]="{'bg-pink': currentCategory?.name == categories.makeup,'bg-purple': currentCategory?.name == categories.candle, 'bg-blue': currentCategory?.name == categories.sculpt
+    ,'bg-gray': currentCategory?.name == categories.jewlery}">
+        <div *ngFor="let item of categoriesArray">
+            <div (click)="currentCategory=item">{{item.name}}</div>
+        </div>
+    </div>
+    <div class="w-100 mt-32" fxLayout="column" fxLayoutAlign="start start">
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="mx-2 font-extrabold" style="font-size: 55px;">{{currentCategory?.name || 'All Products'}}</div>
+            <div class="mx-2" style="font-size:25px">{{products.length}} product</div>
+        </div>
+        <div class="w-100 mt-10" fxLayout="row wrap" fxLayoutAlign="center center">
+            <div *ngFor="let item of products">
+                <app-catalog-element [category]="item.category" [imagePath]="item.imagePath"></app-catalog-element>
+            </div>
+        </div>
+    </div>
+</div>
