@@ -1,26 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
-  --pink-light: #FEE0D9;
-  --pink-dark: #CC898B;
-  --purple-light: #C0BCE4;
-  --purple-dark: #413C6A;
-  --blue-light: #B4DBFF;
-  --blue-dark: #3AA1FF;
-  --gray-light: #D3DAE0;
-  --neutral: #D9BCB5;
-
+    --pink-light: #fee0d9;
+    --pink-dark: #cc898b;
+    --purple-light: #c0bce4;
+    --purple-dark: #413c6a;
+    --blue-light: #b4dbff;
+    --blue-dark: #3aa1ff;
+    --gray-light: #d3dae0;
+    --gray-dark: #3c3d3f;
 }
 
 * {
-  font-family: GFSNeohellenic;
+    font-family: GFSNeohellenic;
 }
 
 @font-face {
-  font-family: "GFSNeohellenic";
-  src: url('assets/fonts/GFSNeohellenic-Regular.ttf');
+    font-family: "GFSNeohellenic";
+    src: url("assets/fonts/GFSNeohellenic-Regular.ttf");
 }
 
 html,
@@ -59,4 +57,19 @@ body {
 
 .h-100 {
   height: 100%;
+    scroll-behavior: smooth;
+    height: 100%;
+    margin: 0;
+}
+
+.darkPinkText {
+    color: var(--pink-dark);
+}
+
+.bgDarkPink {
+    background-color: var(--pink-dark);
+}
+
+.bgLightPink {
+    background-color: var(--pink-light);
 }

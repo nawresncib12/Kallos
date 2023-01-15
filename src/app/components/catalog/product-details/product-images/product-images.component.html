@@ -1,0 +1,15 @@
+<div class="relative ml-2">
+  <div class="absolute ml-5 mt-20" #productImagesPreviewer>
+    <app-product-images-previewer></app-product-images-previewer>
+  </div>
+  <ul #productImages class="list-none flex-col items-center justify-center">
+    <li *ngFor="let image of images; let ind = index" class="mt-2" id="{{ind}}">
+      <img
+        src="{{ image }}"
+        alt="img-{{ ind }}"
+        class="rounded object-fill	.max-w-full"
+        [ngStyle]="{width: '100%', height: '100%', objectFit: 'cover'}"
+      />
+    </li>
+  </ul>
+</div>
