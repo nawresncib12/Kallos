@@ -9,6 +9,7 @@
     --blue-light: #b4dbff;
     --blue-dark: #3aa1ff;
     --gray-light: #d3dae0;
+    --gray-dark: #3c3d3f;
 }
 
 * {
@@ -22,10 +23,19 @@
 
 html,
 body {
+    scroll-behavior: smooth;
     height: 100%;
     margin: 0;
 }
 
 .darkPinkText {
     color: var(--pink-dark);
+}
+
+.bgDarkPink {
+    background-color: var(--pink-dark);
+}
+
+.bgLightPink {
+    background-color: var(--pink-light);
 }

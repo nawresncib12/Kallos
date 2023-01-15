@@ -9,6 +9,7 @@ export class ScrollDownButtonComponent implements OnInit {
   @Input() color: string = '#fff';
   @Input() width: string = '25px';
   @Input() height: string = '25px';
+  @Input() link: string = '';
 
   constructor() {}
 
