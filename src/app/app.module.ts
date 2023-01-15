@@ -6,20 +6,22 @@ import { AppComponent } from './app.component';
 import { CatalogElementComponent } from './components/catalog/catalog-element/catalog-element.component';
 import { CatalogModule } from './components/catalog/catalog.module';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import { HomeComponent } from './pages/home/home.component';
+import { HomeModule } from './components/home/home.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CatalogComponent
-  ],
+  declarations: [AppComponent, CatalogComponent, HomeComponent],
+  providers: [],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CatalogModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    HomeModule,
+    SharedModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
