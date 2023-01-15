@@ -17,6 +17,8 @@ import { RegisterFormComponent } from './components/auth/register-form/register-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { InfoCardComponent } from './components/profile/info-card/info-card.component';
+import { OrdersComponent } from './components/profile/orders/orders.component';
+import { OrderCardComponent } from './components/order-card/order-card.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { InfoCardComponent } from './components/profile/info-card/info-card.comp
     RegisterFormComponent,
     ProfileComponent,
     InfoCardComponent,
+    OrdersComponent,
+    OrderCardComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
