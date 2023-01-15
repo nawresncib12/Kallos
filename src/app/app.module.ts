@@ -9,6 +9,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HomeModule } from './components/home/home.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, CatalogComponent, HomeComponent],
@@ -20,6 +21,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     CatalogModule,
     NoopAnimationsModule,
     HomeModule,
+    SharedModule
   ],
 })
 export class AppModule {}
