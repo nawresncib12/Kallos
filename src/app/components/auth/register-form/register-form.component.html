@@ -1,1 +1,103 @@
-<p>register-form works!</p>
+<form
+  [formGroup]="registerForm"
+  (change)="onChange()"
+  (ngSubmit)="onSubmit()"
+  class="w-full"
+>
+  <div class="my-4 w-full">
+    <input
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="First Name"
+      formControlName="firstName"
+      required
+    />
+  </div>
+  <div class="my-4 w-full">
+    <input
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="Last Name"
+      formControlName="lastName"
+      required
+    />
+  </div>
+
+  <div class="my-4 w-full">
+    <input
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="Address (optional)"
+      formControlName="address"
+    />
+  </div>
+
+  <div class="mt-4 pb-6 w-full relative">
+    <input
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="Email"
+      formControlName="email"
+      email
+      required
+    />
+    <p
+      [ngClass]="{
+      'opacity-100': registerForm.controls.email.errors?.['email']
+    }"
+      class="opacity-0 transition ease-in text-purple-dark absolute bottom-0 left-0 }"
+    >
+      Must be a valid email.
+    </p>
+  </div>
+  <div class="mt-2 w-full">
+    <p
+      class="text-white transition ease-in"
+      [ngClass]="{
+        'opacity-0': registerForm.controls.password.valid
+      }"
+    >
+      Minimum length: 6 characters
+    </p>
+    <input
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="Password"
+      type="password"
+      formControlName="password"
+      required
+    />
+  </div>
+
+  <div class="mt-1 pb-6 w-full relative">
+    <input
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="Confirm Password"
+      type="password"
+      formControlName="confirmPassword"
+      required
+    />
+    <p
+      class="opacity-0 transition ease-in text-purple-dark absolute bottom-0 left-0"
+      [ngClass]="{
+      'opacity-100': registerForm.errors?.['passwordMatch']
+    }"
+    >
+      Password must match!
+    </p>
+  </div>
+  <div class="my-4 w-full">
+    <button
+      class="text-2xl bg-transparent border-pink-light border-2 rounded-lg px-4 py-2 text-white font-bold hover:bg-pink-light hover:text-pink-dark transition duration-300 ease-in-out disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+      type="submit"
+      [disabled]="!registerForm.valid"
+    >
+      Register
+    </button>
+  </div>
+  <div>
+    <p class="text-xl text-white">
+      Already registered ?
+      <a
+        routerLink="/login"
+        class="text-pink-light hover:underline transition duration-300 ease-in-out"
+        >Login</a
+      >
+    </p>
+  </div>
+</form>

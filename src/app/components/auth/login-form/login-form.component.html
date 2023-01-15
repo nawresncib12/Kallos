@@ -1,5 +1,5 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-full">
-  <div class="my-4 w-full">
+  <div class="mt-4 pb-6 w-full relative">
     <input
       class="text-xl px-2 py-2 w-full bg-pink-light"
       placeholder="Email"
@@ -7,8 +7,16 @@
       email
       required
     />
+    <p
+      [ngClass]="{
+      'opacity-100': loginForm.controls.email.errors?.['email']
+    }"
+      class="opacity-0 text-purple-dark transition ease-in absolute bottom-0 left-0"
+    >
+      Must be a valid email.
+    </p>
   </div>
-  <div class="my-4 w-full">
+  <div class="mb-4 w-full">
     <input
       class="text-xl px-2 py-2 w-full bg-pink-light"
       placeholder="Password"

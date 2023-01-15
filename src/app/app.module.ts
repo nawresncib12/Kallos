@@ -15,7 +15,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginFormComponent } from './components/auth/login-form/login-form.component';
 import { RegisterFormComponent } from './components/auth/register-form/register-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     HomeModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
 })
 export class AppModule {}
