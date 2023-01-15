@@ -16,8 +16,10 @@ import { SharedModule } from './components/shared/shared.module';
   declarations: [
     AppComponent,
     CatalogComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    HomeComponent
   ],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
