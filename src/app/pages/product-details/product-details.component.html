@@ -1,5 +1,9 @@
-<div>breadcrumbs</div>
-<div class="font-light">
-  <app-product-images></app-product-images>
-  <app-product-details-specifications></app-product-details-specifications>
+<app-breadcrumbs [items]="breadcrumbs"></app-breadcrumbs>
+<div class="container">
+  <div class="row">
+    <div class="col-6"><app-product-images></app-product-images></div>
+    <div class="col-6">
+      <app-product-details-specifications></app-product-details-specifications>
+    </div>
+  </div>
 </div>

@@ -8,6 +8,7 @@ import { CatalogModule } from './components/catalog/catalog.module';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
     BrowserModule,
     AppRoutingModule,
     CatalogModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

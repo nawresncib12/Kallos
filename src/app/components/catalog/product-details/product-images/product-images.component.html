@@ -1,1 +1,8 @@
-<p>product-images works!</p>
+<div>
+    <app-product-images-previewer (onImageSelected)="onImageSelected($event)" [selectedImage]="selectedImage" [images]="images"></app-product-images-previewer>
+  <ul class="list-none">
+    <li *ngFor="let image of images; let ind = index">
+        <img src="{{ image }}" alt="img-{{ ind }}" class="rounded object-fill	.max-w-full	"/>
+    </li>
+  </ul>
+</div>
