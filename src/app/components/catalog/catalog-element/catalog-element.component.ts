@@ -21,7 +21,7 @@ export class CatalogElementComponent implements OnInit {
 
   categories = Categories;
   onHover: boolean = false;
-
+  @Input() isSmall: boolean = true
   constructor() { }
 
   ngOnInit(): void {

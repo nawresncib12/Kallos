@@ -1,0 +1,11 @@
+.image {
+    width: 40px;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.5;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.image:hover {
+    opacity: 1;
+}

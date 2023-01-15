@@ -8,4 +8,17 @@
         top: 0;
         transition: 0.7s;
     }
+
+    .filterItem {
+        transition: 0.5s;
+    }
+
+    .filterItem:hover {
+        color: black;
+        cursor: pointer;
+    }
+
+    .disabled {
+        color: lightgray;
+    }
 }

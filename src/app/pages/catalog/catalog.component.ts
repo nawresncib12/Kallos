@@ -8,8 +8,8 @@ import { Categories } from 'src/app/components/catalog/catalog-element/catalog-e
 })
 export class CatalogComponent implements OnInit {
   title: string = "All Products"
-  categoriesArray = [{ id: 1, name: Categories.candle }, { id: 2, name: Categories.jewlery }, { id: 3, name: Categories.makeup }, { id: 4, name: Categories.sculpt },]
-  categories = Categories
+  filtersArray = [{ id: 0, name: "No filter" }, { id: 1, name: "from - to +" }, { id: 2, name: "from + to -" }, { id: 3, name: "from A to Z" }, { id: 4, name: "from Z to A" },]
+  show: boolean = false
   products: any[] = [
     { category: "candle", imagePath: "sample2.png", price: 300 },
     { category: "jewlery", imagePath: "sample3.png", price: 100 },
@@ -24,10 +24,23 @@ export class CatalogComponent implements OnInit {
     { category: "makeup", imagePath: "sample.png", price: 200 },
 
   ]
-  currentCategory:any
+  currentFilter: any = 0;
+  currentCategory: any
+  currentPage: number = 0;
+  currentShowenProducts: any[] = []
   constructor() { }
 
   ngOnInit(): void {
+    this.changePage(0)
   }
-
+  changeCategory(category: any) {
+    this.currentCategory = category
+  }
+  changePage(pageIndex: number) {
+    this.currentShowenProducts = this.products.slice(pageIndex * 10, pageIndex * 10 + 10)
+    this.currentPage = pageIndex;
+  }
+  changeFilter(filter: any) {
+    this.currentFilter = filter
+  }
 }

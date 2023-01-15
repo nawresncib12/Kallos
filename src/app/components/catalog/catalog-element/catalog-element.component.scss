@@ -27,7 +27,18 @@
     .details {
         transition: 0.3s;
         min-height: 50px;
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        ;
+    }
+}
+
+.bigContainer {
+    width: 600px;
+    height: 600px;
+
+    .content {
+        height: 600px;
+        min-height: 600px;
     }
 }
 
@@ -38,7 +49,8 @@
 
 @keyframes show {
     from {
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        ;
 
     }
 
@@ -54,7 +66,8 @@
     }
 
     to {
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        ;
 
     }
 }
