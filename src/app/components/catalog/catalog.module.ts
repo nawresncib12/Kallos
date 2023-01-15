@@ -4,7 +4,7 @@ import { CatalogElementComponent } from './catalog-element/catalog-element.compo
 import { ProductImagesComponent } from './product-details/product-images/product-images.component';
 import { ProductDetailsSpecificationsComponent } from './product-details/product-details-specifications/product-details-specifications.component';
 import { ProductImagesPreviewerComponent } from './product-details/product-images-previewer/product-images-previewer.component';
-
+import {MatDividerModule} from '@angular/material/divider';
 
 
 @NgModule({
@@ -15,12 +15,13 @@ import { ProductImagesPreviewerComponent } from './product-details/product-image
     ProductImagesPreviewerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatDividerModule
   ],
   exports: [
     CatalogElementComponent,
     ProductImagesComponent,
-    ProductDetailsSpecificationsComponent
+    ProductDetailsSpecificationsComponent,
   ]
 })
 export class CatalogModule { }
