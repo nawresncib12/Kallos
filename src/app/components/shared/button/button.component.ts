@@ -6,9 +6,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent implements OnInit {
-  @Input() text: string = '';
+  @Input() text: string=""
+  @Input() primary: boolean=false
+  @Input() color: string="#fff"
   @Input() disabled: boolean = false;
-  @Input() color: string = '#fff';
   constructor() {}
 
   ngOnInit(): void {}
