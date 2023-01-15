@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { RouterModule } from '@angular/router';
 import { AppTitleComponent } from './app-title/app-title.component';
+import { ButtonComponent } from './button/button.component';
 
 
 
 @NgModule({
   declarations: [
     BreadcrumbsComponent,
-    AppTitleComponent
+    AppTitleComponent,
+    ButtonComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,7 @@ import { AppTitleComponent } from './app-title/app-title.component';
   ],
   exports: [
     BreadcrumbsComponent,
-    AppTitleComponent
+    AppTitleComponent,ButtonComponent
   ]
 })
 export class SharedModule { }
