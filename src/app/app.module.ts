@@ -15,6 +15,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginFormComponent } from './components/auth/login-form/login-form.component';
 import { RegisterFormComponent } from './components/auth/register-form/register-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { InfoCardComponent } from './components/profile/info-card/info-card.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    ProfileComponent,
+    InfoCardComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
