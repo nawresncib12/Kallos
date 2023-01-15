@@ -3,13 +3,8 @@
     grid-template-columns: 0.5fr 1fr;
 }
 
-.hero .heroImg {
-    position: relative;
-    background-size: cover;
+.hero .heroImg img {
     transform-origin: top right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     animation: scaleOut 3s;
 }
 
