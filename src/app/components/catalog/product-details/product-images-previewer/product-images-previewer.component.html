@@ -1,0 +1,12 @@
+<div class="content-around absolute">
+  <ul class="list-none flex flex-col flex-gap-1">
+    <li
+      *ngFor="let image of images; let ind = index"
+      (click)="emitImageSelected(ind)"
+    >
+      <div [ngClass]="{ selected: ind == selectedImage, 'my-1.5 rounded': true }">
+        <img src="{{ image }}" alt="img-{{ ind }}" class="w-20 h-20 rounded object-fill	.max-w-full	"/>
+      </div>
+    </li>
+  </ul>
+</div>

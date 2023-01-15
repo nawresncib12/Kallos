@@ -1,15 +1,10 @@
 .hero {
     background-color: var(--pink-dark);
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-columns: 0.6fr 1fr;
 }
 
-.hero .heroImg {
-    position: relative;
-    background-size: cover;
+.hero .heroImg img {
     transform-origin: top right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     animation: scaleOut 3s;
 }
 
@@ -19,6 +14,17 @@
     }
     100% {
         transform: scale(1);
+    }
+}
+
+@media only screen and (min-width:600px) {
+    @keyframes scaleOut {
+        0% {
+            transform: scale(6);
+        }
+        100% {
+            transform: scale(1);
+        }
     }
 }
 
