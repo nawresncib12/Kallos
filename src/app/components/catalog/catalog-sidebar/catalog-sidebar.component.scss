@@ -4,8 +4,10 @@
     cursor: pointer;
     opacity: 0.5;
     border-radius: 10px;
-    transition: 0.5s;
+    transition: 0.3s;
 }
-.image:hover {
+
+.image:hover,.selected {
     opacity: 1;
+    width: 45px;
 }

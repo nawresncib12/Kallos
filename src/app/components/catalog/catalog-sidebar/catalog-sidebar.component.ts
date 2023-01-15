@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Categories } from '../catalog-element/catalog-element.component';
+import Category from 'src/app/enums/Category';
 
 @Component({
   selector: 'app-catalog-sidebar',
@@ -7,9 +7,9 @@ import { Categories } from '../catalog-element/catalog-element.component';
   styleUrls: ['./catalog-sidebar.component.scss']
 })
 export class CatalogSidebarComponent implements OnInit {
-  categoriesArray = [{ id: 1, name: Categories.candle }, { id: 2, name: Categories.jewlery }, { id: 3, name: Categories.makeup }, { id: 4, name: Categories.sculpt },]
+  categoriesArray = [{ id: 1, name: Category.CANDLES }, { id: 2, name: Category.JEWELRY }, { id: 3, name: Category.MAKEUP }, { id: 4, name: Category.SCULPTURE },]
   currentCategory: any
-  categories = Categories
+  categories = Category
   @Output() selectCategory = new EventEmitter()
   constructor() { }
 

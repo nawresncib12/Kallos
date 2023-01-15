@@ -1,11 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import Category from 'src/app/enums/Category';
 //to be moved to shared
-export enum Categories {
-  candle = "candle",
-  makeup = "makeup",
-  sculpt = "sculpt",
-  jewlery = "jewlery"
-}
 @Component({
   selector: 'app-catalog-element',
   templateUrl: './catalog-element.component.html',
@@ -19,7 +14,7 @@ export class CatalogElementComponent implements OnInit {
   @Input() imagePath: string = "sample.png";
   @Input() price: string = "500";
 
-  categories = Categories;
+  categories = Category;
   onHover: boolean = false;
   @Input() isSmall: boolean = true
   constructor() { }

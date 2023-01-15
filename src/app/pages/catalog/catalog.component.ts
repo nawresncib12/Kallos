@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Categories } from 'src/app/components/catalog/catalog-element/catalog-element.component';
+import Category from 'src/app/enums/Category';
+import { Product } from 'src/app/models/Product';
 
 @Component({
   selector: 'app-catalog',
@@ -10,22 +11,22 @@ export class CatalogComponent implements OnInit {
   title: string = "All Products"
   filtersArray = [{ id: 0, name: "No filter" }, { id: 1, name: "from - to +" }, { id: 2, name: "from + to -" }, { id: 3, name: "from A to Z" }, { id: 4, name: "from Z to A" },]
   show: boolean = false
-  products: any[] = [
-    { category: "candle", imagePath: "sample2.png", price: 300 },
-    { category: "jewlery", imagePath: "sample3.png", price: 100 },
-    { category: "makeup", imagePath: "sample.png", price: 200 },
-    { category: "makeup", imagePath: "sample.png", price: 200 },
-    { category: "jewlery", imagePath: "sample3.png", price: 100 },
-    { category: "makeup", imagePath: "sample.png", price: 200 },
-    { category: "jewlery", imagePath: "sample3.png", price: 100 },
-    { category: "makeup", imagePath: "sample.png", price: 200 },
-    { category: "jewlery", imagePath: "sample3.png", price: 100 },
-    { category: "makeup", imagePath: "sample.png", price: 200 },
-    { category: "makeup", imagePath: "sample.png", price: 200 },
+  products: Product[] = [
+    { category: Category.CANDLES, images: ["sample2.png"], price: 300, name: "test", id: 0, description: "test" },
+    { category: Category.JEWELRY, images: ["sample3.png"], price: 100, name: "test", id: 0, description: "test" },
+    { category: Category.MAKEUP, images: ["sample.png",], price: 200, name: "test", id: 0, description: "test" },
+    { category: Category.MAKEUP, images: ["sample.png",], price: 200, name: "test", id: 0, description: "test" },
+    { category: Category.JEWELRY, images: ["sample3.png"], price: 100, name: "test", id: 0, description: "test" },
+    { category: Category.MAKEUP, images: ["sample.png",], price: 200, name: "test", id: 0, description: "test" },
+    { category: Category.JEWELRY, images: ["sample3.png"], price: 100, name: "test", id: 0, description: "test" },
+    { category: Category.MAKEUP, images: ["sample.png",], price: 200, name: "test", id: 0, description: "test" },
+    { category: Category.JEWELRY, images: ["sample3.png"], price: 100, name: "test", id: 0, description: "test" },
+    { category: Category.MAKEUP, images: ["sample.png",], price: 200, name: "test", id: 0, description: "test" },
+    { category: Category.MAKEUP, images: ["sample.png",], price: 200, name: "test", id: 0, description: "test" },
 
   ]
   currentFilter: any = 0;
-  currentCategory: any
+  currentCategory: any = "All products"
   currentPage: number = 0;
   currentShowenProducts: any[] = []
   constructor() { }
