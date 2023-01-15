@@ -4,7 +4,7 @@ export class Product {
   name: string = "";
   description: string = '';
   price: number = 0;
-  path: string = '';
+  images: string[] = [];
   category: Category = Category.MAKEUP;
   id: number = 0;
 
@@ -14,6 +14,6 @@ export class Product {
     this.description = data.description ?? '';
     this.price = data.price ?? 0;
     this.category = data.category ?? Category.MAKEUP;
-    this.path = data.path ?? '';
+    this.images = data.images ?? [];
   }
 }

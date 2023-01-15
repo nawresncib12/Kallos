@@ -1,0 +1,9 @@
+<div fxLayout="column" fxLayoutAlign="start center" class="catalog-sidebar h-100">
+    <div class="my-8" style="width: 30px;"><img src="assets/pics/logo.png" alt=""></div>
+    <div *ngFor="let item of categoriesArray">
+        <div class="m-3 ">
+            <img [ngClass]="{'bg-pink': item?.name == categories.MAKEUP,'bg-purple': item?.name == categories.CANDLES, 'bg-blue': item?.name == categories.SCULPTURE
+            ,'bg-gray': item?.name == categories.JEWELRY , 'selected':currentCategory==item}" class="image p-1" (click)="changeCategory(item)"
+                [src]="'assets/pics/'+item.name.toLowerCase()+'.png'" [alt]="item.name">
+        </div>
+    </div>

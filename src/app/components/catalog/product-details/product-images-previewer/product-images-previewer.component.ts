@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProductDetailsService} from "../../../../pages/product-details/product-details.service";
+
 
 @Component({
   selector: 'app-product-images-previewer',
@@ -6,15 +8,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./product-images-previewer.component.scss'],
 })
 export class ProductImagesPreviewerComponent implements OnInit {
-  @Input() images: string[] = [];
-  @Input() selectedImage: number = 0;
-  @Output() onImageSelected = new EventEmitter<number>();
+  selectedImage: number = 0;
+  images: string[] = [];
 
-  emitImageSelected(imageIndex: number) {
-    this.onImageSelected.emit(imageIndex);
+  onImageSelected(imageIndex: number) {
+    this.productDetailsService.setSelectedImage(imageIndex);
+    window.scrollTo({top: imageIndex * 650})
   }
 
-  constructor() {}
+  constructor(private productDetailsService: ProductDetailsService) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.productDetailsService.product.subscribe(
+      product => this.images = product.images
+    )
+    this.productDetailsService.selectedImageIndex.subscribe(
+      selectedImage => this.selectedImage = selectedImage
+    )
+  }
 }
