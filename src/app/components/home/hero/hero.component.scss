@@ -1,0 +1,82 @@
+.hero {
+    background-color: var(--pink-dark);
+    grid-template-columns: 0.5fr 1fr;
+}
+
+.hero .heroImg {
+    position: relative;
+    background-size: cover;
+    transform-origin: top right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: scaleOut 3s;
+}
+
+@keyframes scaleOut {
+    0% {
+        transform: scale(3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes type {
+    0% {
+        transform: translateX(0ch);
+    }
+    5%,
+    10% {
+        transform: translateX(1ch);
+    }
+    15%,
+    20% {
+        transform: translateX(2ch);
+    }
+    25%,
+    30% {
+        transform: translateX(3ch);
+    }
+    35%,
+    40% {
+        transform: translateX(4ch);
+    }
+    45%,
+    50% {
+        transform: translateX(5ch);
+    }
+    55%,
+    60% {
+        transform: translateX(6ch);
+    }
+    65%,
+    70% {
+        transform: translateX(7ch);
+    }
+    75%,
+    80% {
+        transform: translateX(8ch);
+    }
+    85%,
+    90% {
+        transform: translateX(9ch);
+    }
+    95%,
+    100% {
+        transform: translateX(11ch);
+    }
+}
+
+.hero img {
+    object-fit: cover;
+}
