@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import ApiResponse from '../data/ApiResponse';
+import { FetcherService } from '../helpers/fetcher/fetcher.service';
 
-type LoginResponse = {
+type LoginResponseData = {
   access_token: string;
 };
 
@@ -12,7 +13,7 @@ type LoginResponse = {
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly fetcherService: FetcherService) {}
 
   API_URL = environment.API_URL;
 
@@ -29,19 +30,15 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.http
-      .post<ApiResponse<LoginResponse>>(`${this.API_URL}/auth/login`, {
+    return this.fetcherService
+      .post<LoginResponseData>(`/auth/login`, {
         username: email,
         password,
       })
       .pipe(
-        tap(
-          (res) => {
-            console.log('Login successful!');
-            localStorage.setItem('token', res.data.access_token);
-          },
-          (err) => console.log(err)
-        )
+        tap((res) => {
+          localStorage.setItem('token', res.data.access_token);
+        })
       );
   }
 }
