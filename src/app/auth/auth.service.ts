@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ProfileService } from '../data/profile.service';
 import { FetcherService } from '../helpers/fetcher/fetcher.service';
+import User from '../model/User';
 
 type LoginResponseData = {
   access_token: string;
@@ -38,5 +40,15 @@ export class AuthService {
           localStorage.setItem('token', res.data.access_token);
         })
       );
+  }
+
+  register(formValue: {
+    firstName: string;
+    lastName: string;
+    address: string;
+    email: string;
+    password: string;
+  }) {
+    return this.fetcherService.post<User>(`auth/register`, formValue);
   }
 }
