@@ -74,7 +74,7 @@ export type User = {
 
 export const mockUser: User = {
   id: 1,
-  avatar: 1,
+  avatar: 7,
   firstName: 'Flen',
   lastName: 'Fouleni',
   role: Role.ADMIN,
@@ -98,9 +98,49 @@ export const mockUser: User = {
             category: Category.JEWELRY,
           },
         },
+        {
+          id: 1,
+          quantity: 2,
+          product: {
+            id: 1,
+            name: 'Blue Lipstick',
+            description: 'Product 2 description',
+            price: 34,
+            category: Category.MAKEUP,
+          },
+        },
       ],
       orderDate: new Date(),
       status: OrderStatus.Pending,
+    },
+    {
+      id: 1,
+      orderItems: [
+        {
+          id: 1,
+          quantity: 1,
+          product: {
+            id: 1,
+            name: 'Product 1',
+            description: 'Product 1 description',
+            price: 100,
+            category: Category.JEWELRY,
+          },
+        },
+        {
+          id: 1,
+          quantity: 5,
+          product: {
+            id: 1,
+            name: 'Blue Lipstick',
+            description: 'Product 2 description',
+            price: 34,
+            category: Category.MAKEUP,
+          },
+        },
+      ],
+      orderDate: new Date(),
+      status: OrderStatus.Delivered,
     },
   ],
 };

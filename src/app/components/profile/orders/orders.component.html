@@ -1,1 +1,59 @@
-<p>orders works!</p>
+<h1 class="text-5xl mb-6 font-bold text-pink-dark">Orders</h1>
+<div class="flex space-x-2 mb-12 flex-wrap">
+  <button (click)="onChangeStatusFilter('ALL')">
+    <span
+      [ngClass]="{
+        underline: statusFilter === 'ALL'
+      }"
+      class="text-pink-dark text-xl border-r-2 transition ease-in hover:text-purple-dark border-pink-dark pr-6"
+      >All</span
+    >
+  </button>
+  <button (click)="onChangeStatusFilter('Pending')">
+    <span
+      [ngClass]="{
+        underline: statusFilter === 'Pending'
+      }"
+      class="text-pink-dark text-xl border-r-2 transition ease-in hover:text-purple-dark border-pink-dark px-6"
+      >Pending</span
+    >
+  </button>
+  <button (click)="onChangeStatusFilter('Delivered')">
+    <span
+      [ngClass]="{
+        underline: statusFilter === 'Delivered'
+      }"
+      class="text-pink-dark text-xl border-r-2 transition ease-in hover:text-purple-dark border-pink-dark px-6"
+      >Delivered</span
+    >
+  </button>
+  <button (click)="onChangeStatusFilter('Shipped')">
+    <span
+      [ngClass]="{
+        underline: statusFilter === 'Shipped'
+      }"
+      class="text-pink-dark text-xl border-r-2 transition ease-in hover:text-purple-dark border-pink-dark px-6"
+      >Shipped</span
+    >
+  </button>
+  <button (click)="onChangeStatusFilter('Cancelled')">
+    <span
+      [ngClass]="{
+        underline: statusFilter === 'Cancelled'
+      }"
+      class="text-pink-dark text-xl border-r-2 transition ease-in hover:text-purple-dark border-pink-dark px-6"
+      >Cancelled</span
+    >
+  </button>
+</div>
+<div *ngFor="let order of filteredOrders" class="w-full">
+  <app-order-card [order]="order"></app-order-card>
+</div>
+<div *ngIf="filteredOrders.length === 0">
+  <p *ngIf="statusFilter === 'ALL'" class="text-2xl text-purple-dark">
+    No orders found.
+  </p>
+  <p *ngIf="statusFilter !== 'ALL'" class="text-2xl text-purple-dark">
+    No {{ statusFilter }} orders found.
+  </p>
+</div>
