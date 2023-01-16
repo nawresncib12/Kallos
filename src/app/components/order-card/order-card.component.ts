@@ -13,7 +13,7 @@ export class OrderCardComponent implements OnInit {
   ngOnChanges(): void {
     this.total =
       this.order?.orderItems.reduce((acc, item) => {
-        return acc + item.product.price * item.quantity;
+        return acc + (item.product ? item.product.price * item.quantity : 0);
       }, 0) ?? 0;
   }
 

@@ -3,7 +3,7 @@
     <app-product-images-previewer></app-product-images-previewer>
   </div>
   <ul #productImages class="list-none flex-col items-center justify-center">
-    <li *ngFor="let image of images; let ind = index" class="mt-2" id="{{ind}}">
+    <li *ngFor="let image of (productDetailsService.product$ | async)?.images; let ind = index" class="mt-2" id="{{ind}}">
       <img
         src="{{ image }}"
         alt="img-{{ ind }}"

@@ -4,7 +4,7 @@ import {Product} from "../../model/Product";
 import Category from "../../enums/Category";
 import {HttpClient} from "@angular/common/http";
 import {FetcherService} from "../../helpers/fetcher/fetcher.service";
-import {ApiResponse} from "../../data/types";
+import ApiResponse from "../../data/ApiResponse";
 
 @Injectable({
   providedIn: 'root'

@@ -7,27 +7,11 @@ import {Subject, takeUntil} from "rxjs";
   templateUrl: './product-images.component.html',
   styleUrls: ['./product-images.component.scss']
 })
-export class ProductImagesComponent implements OnInit, AfterViewInit, OnDestroy {
-  selectedImage: number = 0;
-  images!: string[]
-  private destroyed$ = new Subject<void>()
+export class ProductImagesComponent implements AfterViewInit{
   @ViewChild("productImages") imagesList!: ElementRef
   @ViewChild("productImagesPreviewer") imagePreviewer!: ElementRef
 
-  constructor(private productDetailsService: ProductDetailsService) {}
-
-  onImageSelected(selectedImageIndex: number) {
-    this.productDetailsService.setSelectedImage(selectedImageIndex);
-  }
-
-  ngOnInit(): void {
-    this.productDetailsService.product$.pipe(takeUntil(this.destroyed$)).subscribe(
-      product => this.images = product.images
-    )
-    this.productDetailsService.selectedImageIndex$.pipe(takeUntil(this.destroyed$)).subscribe(
-      selectedImage => this.selectedImage = selectedImage
-    )
-  }
+  constructor(public productDetailsService: ProductDetailsService) {}
 
   ngAfterViewInit(): void {
     const listItems = this.imagesList.nativeElement.querySelectorAll('li');
@@ -41,10 +25,5 @@ export class ProductImagesComponent implements OnInit, AfterViewInit, OnDestroy 
       if (pageYOffset < listItems.length * 600 + this.imagesList.nativeElement.offsetTop)
         this.imagePreviewer.nativeElement.style.transform = "translateY(" + pageYOffset + "px" + ")";
     };
-  }
-
-  ngOnDestroy(): void {
-    this.destroyed$.next();
-    this.destroyed$.complete();
   }
 }

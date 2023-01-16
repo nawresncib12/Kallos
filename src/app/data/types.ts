@@ -1,10 +1,10 @@
+import ApiResponse from "./ApiResponse";
+import {Product} from "../model/Product";
+import Order from "../model/Order";
+import User from "../model/User";
+
 export type ExtractData<T> = T extends ApiResponse<infer U> ? U : never;
 
-export type ApiResponse<T> = {
-  data: T;
-  status: number;
-  message: string;
-};
 export enum Category {
   JEWELRY = 'JEWELRY',
   SCULPTURE = 'SCULPTURE',
@@ -22,62 +22,6 @@ export enum OrderStatus {
   Cancelled = 'Cancelled',
 }
 
-export type Product = {
-  id: number;
-
-  name: string;
-
-  description: string;
-
-  details: string | null;
-
-  images: string[];
-
-  price: number;
-
-  category: Category;
-};
-type OrderItem = {
-  id: number;
-  quantity: number;
-  product: Product;
-};
-
-export type Order = {
-  id: number;
-
-  orderItems: OrderItem[];
-
-  orderDate: Date;
-
-  status: OrderStatus;
-
-  shippingAddress: string;
-
-  note: string;
-};
-
-export type User = {
-  id: number;
-
-  avatar?: number;
-
-  firstName: string;
-
-  lastName: string;
-
-  address?: string;
-
-  phone?: string;
-
-  role: Role;
-
-  email: string;
-
-  createdAt: Date;
-
-  updatedAt: Date;
-};
 
 export type ProfileResponse = ApiResponse<
   User & { orders: Omit<Order, 'orderItems'>[] }

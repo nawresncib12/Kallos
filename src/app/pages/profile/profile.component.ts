@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { OrdersResponse, ProfileResponse } from 'src/app/data/types';
-import { DataFetcherService } from 'src/app/helpers/fecher/data-fetcher.service';
-import { mockOrders, mockUser } from './mock';
+import {Component, OnInit} from '@angular/core';
+import {OrdersResponse, ProfileResponse} from 'src/app/data/types';
+import {mockOrders, mockUser} from './mock';
+import {FetcherService} from "../../helpers/fetcher/fetcher.service";
+import ApiResponse from "../../data/ApiResponse";
+import Order from "../../model/Order";
 
 @Component({
   selector: 'app-profile',
@@ -10,15 +12,17 @@ import { mockOrders, mockUser } from './mock';
 })
 export class ProfileComponent implements OnInit {
   user: ProfileResponse['data'] | null = null;
-  orders: OrdersResponse | null = {
+  orders: OrdersResponse | null = new ApiResponse<Order[]>({
     data: mockOrders,
     message: 'success',
     status: 200,
-  };
-  constructor(private readonly dataFetcher: DataFetcherService) {}
+  });
+
+  constructor(private readonly fetcherService: FetcherService) {
+  }
 
   ngOnInit(): void {
-    this.dataFetcher.get<ProfileResponse>('profile').subscribe((res) => {
+    this.fetcherService.get<ProfileResponse['data']>('profile').subscribe((res) => {
       this.user = res.data;
     });
   }

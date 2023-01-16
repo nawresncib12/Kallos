@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProfileResponse, User } from 'src/app/data/types';
+import { ProfileResponse } from 'src/app/data/types';
 import { mockUser } from 'src/app/pages/profile/mock';
 
 @Component({

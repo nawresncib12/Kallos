@@ -26,6 +26,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './auth/auth.interceptor';
 import {CheckOutComponent} from "./pages/check-out/check-out.component";
 import {CheckOutModule} from "./components/check-out/check-out.module";
+import {ApiResponseInterceptor} from "./interceptors/api-response.interceptor";
 
 @NgModule({
   declarations: [
@@ -66,6 +67,11 @@ import {CheckOutModule} from "./components/check-out/check-out.module";
       useClass: AuthInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiResponseInterceptor,
+      multi: true
+    }
   ],
 })
 export class AppModule {
