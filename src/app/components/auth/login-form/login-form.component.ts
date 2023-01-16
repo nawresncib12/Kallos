@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs';
+import { firstValueFrom, tap } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -23,16 +23,20 @@ export class LoginFormComponent implements OnInit {
     ]),
   });
 
-  onSubmit(): void {
+  async onSubmit() {
     if (this.loginForm.invalid) return;
     if (!this.loginForm.value.email || !this.loginForm.value.password) return;
 
-    this.authService
-      .login(this.loginForm.value.email, this.loginForm.value.password)
-      .subscribe(() => {
-        console.log('Login successful!');
-        this.router.navigate(['/profile']);
-      });
+    const response = await firstValueFrom(
+      this.authService.login(
+        this.loginForm.value.email,
+        this.loginForm.value.password
+      )
+    );
+
+    if (response) {
+      this.router.navigate(['/profile']);
+    }
   }
 
   ngOnInit(): void {}

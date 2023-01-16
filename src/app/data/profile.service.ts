@@ -13,5 +13,15 @@ export class ProfileService {
     return this.fetcherService.get<ProfileResponseData>('profile');
   }
 
+  changePassword(currentPassword: string, newPassword: string) {
+    return this.fetcherService.post<ProfileResponseData>(
+      'profile/change-password',
+      {
+        currentPassword,
+        password: newPassword,
+      }
+    );
+  }
+
   profile$ = this.getProfile().pipe(map((response) => response.data));
 }

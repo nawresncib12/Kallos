@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import ApiResponse from '../data/ApiResponse';
 import { FetcherService } from '../helpers/fetcher/fetcher.service';
 
 type LoginResponseData = {
@@ -31,7 +29,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.fetcherService
-      .post<LoginResponseData>(`/auth/login`, {
+      .post<LoginResponseData>(`auth/login`, {
         username: email,
         password,
       })

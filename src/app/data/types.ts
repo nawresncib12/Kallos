@@ -29,6 +29,8 @@ export type ProfileResponseData = ExtractData<ProfileResponse>;
 
 export type ProfileUpdateResponse = ApiResponse<User>;
 export type ProfileUpdatePasswordResponse = ApiResponse<User>;
+export type ProfileUpdatePasswordResponseData =
+  ExtractData<ProfileUpdatePasswordResponse>;
 export type ProductsResponse = ApiResponse<Product[]>;
 export type ProductByIdResponse = ApiResponse<Product>;
 export type LikeProductResponse = ApiResponse<{
