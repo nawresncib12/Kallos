@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CheckOutProductsListComponent} from './check-out-products-list/check-out-products-list.component';
 import {CheckOutProductsListItemComponent} from './check-out-products-list-item/check-out-products-list-item.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import {CheckOutProductsListItemComponent} from './check-out-products-list-item/
     CheckOutProductsListItemComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatBadgeModule
   ],
   exports: [
     CheckOutProductsListComponent,

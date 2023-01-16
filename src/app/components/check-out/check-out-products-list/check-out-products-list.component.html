@@ -1,56 +1,44 @@
-<div class="flex justify-center">
-  <ul class="bg-white rounded-lg w-96 text-gray-900">
-    <li class=" p-2 border-b border-gray-200 w-full">
-      <div class="grid grid-cols-2  flex  items-center  ">
-        <div class="grid grid-cols-2  flex gap-1  items-center  ">
-          <div class=" flex  justify-center">
-            <img src="assets/images/products/prod1.png" class=" max-h-14  rounded-lg" alt="">
-          </div>
-          <div>
-            <h3 class="font-medium leading-tight text-3xl">Salem</h3>
-            <h6 class="font-medium leading-tight text-base">40x40</h6>
-          </div>
+<div class="flex justify-center p-4" [style.background-color]="'var(--gray-light)'">
+  <div class="flex justify-center w-4/5 flex-col">
+    <ul class="rounded-lg text-gray-900">
 
-        </div>
-        <div class="grid grid-cols-1 flex  items-center justify-items-end ">
-          <h4 class="font-medium leading-tight text-2xl">$3,900.00</h4>
-        </div>
-      </div>
-    </li>
-    <li class=" p-2 border-b border-gray-200 w-full">
-      <div class="grid grid-cols-2  flex  items-center  ">
-        <div class="grid grid-cols-2  flex gap-1  items-center  ">
-          <div class=" flex  justify-center">
-            <img src="assets/images/products/prod1.png" class=" max-h-14  rounded-lg" alt="">
-          </div>
-          <div>
-            <h3 class="font-medium leading-tight text-3xl">Salem</h3>
-            <h6 class="font-medium leading-tight text-base">40x40</h6>
-          </div>
+      <app-check-out-products-list-item></app-check-out-products-list-item>
+      <app-check-out-products-list-item></app-check-out-products-list-item>
+      <app-check-out-products-list-item></app-check-out-products-list-item>
+    </ul>
+    <div class="flex flex-wrap p-2  justify-between">
 
-        </div>
-        <div class="grid grid-cols-1 flex  items-center justify-items-end ">
-          <h4 class="font-medium leading-tight text-2xl">$3,900.00</h4>
-        </div>
-      </div>
-    </li>
-    <li class=" p-2 border-b border-gray-200   w-full">
-      <div class="grid grid-cols-2  flex  items-center  ">
-        <div class="grid grid-cols-2  flex gap-1  items-center  ">
-          <div class=" flex  justify-center">
-            <img src="assets/images/products/prod1.png" class=" max-h-14  rounded-lg" alt="">
-          </div>
-          <div>
-            <h3 class="font-medium leading-tight text-3xl">Salem</h3>
-            <h6 class="font-medium leading-tight text-base">40x40</h6>
-          </div>
+      <h5 class="font-medium leading-tight text-xl">Subtotal</h5>
 
-        </div>
-        <div class="grid grid-cols-1 flex  items-center justify-items-end ">
-          <h4 class="font-medium leading-tight text-2xl">$3,900.00</h4>
-        </div>
-      </div>
-    </li>
-  </ul>
+
+      <h4 class="font-medium leading-tight text-2xl">
+        $6,900.00
+      </h4>
+
+    </div>
+    <div class="flex flex-wrap p-2  justify-between">
+
+      <h5 class="font-medium leading-tight text-xl">Shipping</h5>
+
+
+      <h4 class="font-medium leading-tight text-2xl">
+        $12.02
+      </h4>
+
+    </div>
+    <hr>
+    <div class="flex flex-wrap p-2  justify-between">
+
+      <h3 class="font-medium leading-tight text-3xl">Total</h3>
+
+
+      <h3 class="font-medium leading-tight text-3xl">
+        $12.02
+      </h3>
+
+    </div>
+  </div>
+
+
 </div>
 
