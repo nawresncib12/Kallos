@@ -20,10 +20,10 @@ export class ProductImagesPreviewerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productDetailsService.product.subscribe(
+    this.productDetailsService.product$.subscribe(
       product => this.images = product.images
     )
-    this.productDetailsService.selectedImageIndex.subscribe(
+    this.productDetailsService.selectedImageIndex$.subscribe(
       selectedImage => this.selectedImage = selectedImage
     )
   }
