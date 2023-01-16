@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import Category from 'src/app/enums/Category';
-import { mockUser, Order, OrderStatus } from 'src/app/pages/profile/mock';
+import { mockUser, Order } from 'src/app/pages/profile/mock';
 
 @Component({
   selector: 'app-orders',

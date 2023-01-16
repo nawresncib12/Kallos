@@ -21,6 +21,7 @@ import { OrdersComponent } from './components/profile/orders/orders.component';
 import { OrderCardComponent } from './components/order-card/order-card.component';
 import { AvatarPipe } from './avatar.pipe';
 import { FilterButtonComponent } from './components/profile/orders/filter-button/filter-button.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FilterButtonComponent } from './components/profile/orders/filter-button
     OrderCardComponent,
     AvatarPipe,
     FilterButtonComponent,
+    ChangePasswordComponent,
   ],
   bootstrap: [AppComponent],
   imports: [

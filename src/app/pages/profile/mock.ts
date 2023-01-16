@@ -51,7 +51,7 @@ export type Order = {
 export type User = {
   id: number;
 
-  avatar: number;
+  avatar?: number;
 
   firstName: string;
 
