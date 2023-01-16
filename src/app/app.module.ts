@@ -20,6 +20,7 @@ import { InfoCardComponent } from './components/profile/info-card/info-card.comp
 import { OrdersComponent } from './components/profile/orders/orders.component';
 import { OrderCardComponent } from './components/order-card/order-card.component';
 import { AvatarPipe } from './avatar.pipe';
+import { FilterButtonComponent } from './components/profile/orders/filter-button/filter-button.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AvatarPipe } from './avatar.pipe';
     OrdersComponent,
     OrderCardComponent,
     AvatarPipe,
+    FilterButtonComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
