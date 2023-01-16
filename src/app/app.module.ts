@@ -22,6 +22,8 @@ import { OrderCardComponent } from './components/order-card/order-card.component
 import { AvatarPipe } from './avatar.pipe';
 import { FilterButtonComponent } from './components/profile/orders/filter-button/filter-button.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,14 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
     HomeModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ],
 })
 export class AppModule {}
