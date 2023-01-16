@@ -27,6 +27,8 @@ import {AuthInterceptor} from './auth/auth.interceptor';
 import {CheckOutComponent} from "./pages/check-out/check-out.component";
 import {CheckOutModule} from "./components/check-out/check-out.module";
 import {ApiResponseInterceptor} from "./interceptors/api-response.interceptor";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import {ApiResponseInterceptor} from "./interceptors/api-response.interceptor";
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    CheckOutModule
+    CheckOutModule,
+    MatProgressSpinnerModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {

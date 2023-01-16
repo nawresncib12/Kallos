@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BreadcrumbsItems} from 'src/app/components/shared/breadcrumbs/breadcrumbs.component';
-import {Product} from "../../model/Product";
 import {Subject, takeUntil} from "rxjs";
 import {ProductDetailsService} from "./product-details.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ToasterService} from "../../helpers/toaster/toaster.service";
 
 @Component({
   selector: 'app-product-details',
@@ -11,13 +11,16 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
-  selectedImage: number = 0;
-  product!: Product;
   loading: boolean = false
   breadcrumbs!: BreadcrumbsItems;
   private destroyed$ = new Subject<void>()
 
-  constructor(private productDetailsService: ProductDetailsService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(
+    private productDetailsService: ProductDetailsService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private toaster: ToasterService
+  ) {
   }
 
   ngOnInit(): void {
@@ -29,25 +32,17 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
             next: response => {
               if (response.isOk()) {
                 this.productDetailsService.setProduct(response.data)
-              } else {
-                this.router.navigate(['products'])
+                  this.breadcrumbs = [{label: 'products', link: ['/products']}, {label: response.data.name}]
               }
+            },
+            error: (error) => {
+              this.router.navigate(['products'])
+              this.toaster.toastApiResponse(error.error)
             },
             complete: () => this.loading = false
           });
       }
     )
-
-    this.productDetailsService.product$.pipe(takeUntil(this.destroyed$)).subscribe(
-      product => {
-        this.product = product;
-        this.breadcrumbs = [{label: 'products', link: ['/products']}, {label: product.name}]
-      }
-    );
-
-    this.productDetailsService.selectedImageIndex$.pipe(takeUntil(this.destroyed$)).subscribe(
-      index => this.selectedImage = index
-    );
   }
 
   ngOnDestroy(): void {
