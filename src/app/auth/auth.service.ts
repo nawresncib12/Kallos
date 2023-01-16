@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ProfileService } from '../data/profile.service';
 import { FetcherService } from '../helpers/fetcher/fetcher.service';
 import User from '../model/User';
 
@@ -13,12 +13,16 @@ type LoginResponseData = {
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private readonly fetcherService: FetcherService) {}
+  constructor(
+    private readonly fetcherService: FetcherService,
+    private readonly jwtHelper: JwtHelperService
+  ) {}
 
   API_URL = environment.API_URL;
 
   isLoggedIn() {
-    return !!localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    return !this.jwtHelper.isTokenExpired(token);
   }
 
   getAuthToken() {
