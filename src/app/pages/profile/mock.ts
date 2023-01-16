@@ -51,9 +51,15 @@ export type Order = {
 export type User = {
   id: number;
 
+  avatar: number;
+
   firstName: string;
 
   lastName: string;
+
+  address?: string;
+
+  phone?: string;
 
   role: Role;
 
@@ -68,9 +74,12 @@ export type User = {
 
 export const mockUser: User = {
   id: 1,
+  avatar: 1,
   firstName: 'Flen',
   lastName: 'Fouleni',
   role: Role.ADMIN,
+  address: '1234 Main St',
+  phone: '123-456-7890',
   email: 'flen@gmail.com',
   createdAt: new Date(),
   updatedAt: new Date(),
