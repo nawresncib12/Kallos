@@ -1,12 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import Category from 'src/app/enums/Category';
+//to be moved to shared
 @Component({
   selector: 'app-catalog-element',
   templateUrl: './catalog-element.component.html',
   styleUrls: ['./catalog-element.component.scss']
 })
-export class CatalogElementComponent implements OnInit {
 
+
+export class CatalogElementComponent implements OnInit {
+  @Input() title: string = "Blue top tak Jacket";
+  @Input() category: string = "makeup";
+  @Input() imagePath: string = "sample.png";
+  @Input() price: string = "500";
+
+  categories = Category;
+  onHover: boolean = false;
+  @Input() isSmall: boolean = true
   constructor() { }
 
   ngOnInit(): void {

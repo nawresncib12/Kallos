@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -7,15 +10,29 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private readonly authService: AuthService,
+    private router: Router
+  ) {}
 
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
   });
 
   onSubmit(): void {
-    console.log(this.loginForm.value);
+    if (this.loginForm.invalid) return;
+    if (!this.loginForm.value.email || !this.loginForm.value.password) return;
+
+    this.authService
+      .login(this.loginForm.value.email, this.loginForm.value.password)
+      .subscribe(() => {
+        console.log('Login successful!');
+        this.router.navigate(['/profile']);
+      });
   }
 
   ngOnInit(): void {}

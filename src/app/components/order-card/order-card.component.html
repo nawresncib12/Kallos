@@ -1,0 +1,28 @@
+<div *ngIf="order !== null" class="w-full">
+  <div
+    class="bg-white text-slate-800 shadow-sm flex flex-col rounded-md w-full min-w-max py-4 px-5 my-4"
+  >
+    <div class="py-2 flex justify-end">
+      <p class="text-lg font-semibold">
+        <span class="bg-pink-light p-2 rounded-md text-pink-dark">{{
+          order.status
+        }}</span>
+      </p>
+    </div>
+    <div *ngFor="let item of order.orderItems">
+      <p>
+        <span class="text-xl opacity-70">{{ item.quantity }}x</span>
+        <span class="text-xl">
+          {{ item.product.name }} | {{ item.product.category }}
+        </span>
+        <span class="text-xl opacity-70"
+          >{{ item.product.price * item.quantity }} DT</span
+        >
+      </p>
+    </div>
+    <div class="flex justify-between mt-4">
+      <p>Total: {{ total }} DT</p>
+      <p>{{ order.orderDate | date }}</p>
+    </div>
+  </div>
+</div>

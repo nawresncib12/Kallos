@@ -1,1 +1,39 @@
-<app-catalog-element></app-catalog-element>
+<div class="container" fxLayout="row" fxLayoutAlign="start start">
+    <div class="catalog-sidebar">
+        <app-catalog-sidebar (selectCategory)="changeCategory($event)"></app-catalog-sidebar>
+
+    </div>
+    <div class="w-100 mt-32 mx-10" fxLayout="column" fxLayoutAlign="start start">
+        <div class="w-100" fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <div class="mx-2 font-extrabold" style="font-size: 65px;">{{currentCategory| titlecase }}</div>
+                <div class="mx-2 mt-5 text-gray-400" style="font-size:15px">{{products.length}} products</div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <div *ngFor="let filter of filtersArray" class="mx-2">
+                    <div (click)="changeFilter(filter.id)" class="filterItem mx-2 w-100" style="font-size:15px"
+                        [ngClass]="{'text-gray-400':currentFilter !=filter.id}">
+                        {{filter.name}}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="w-100 mt-12 " fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <div *ngFor="let item of currentShowenProducts; let index=index">
+                <app-catalog-element [isSmall]="index%5>2? false:true" [category]="item.category"
+                    [imagePath]="item.images[0]"></app-catalog-element>
+
+            </div>
+        </div>
+        <div class="w-100 my-10" fxLayout="row" fxLayoutAlign="center start">
+            <div style="width: 300px;" fxLayout="row" fxLayoutAlign="center start">
+                <div style="cursor: pointer;" *ngIf="currentPage !=0" (click)="changePage(currentPage-1)">
+
+                    < </div>
+                        <div class="mx-10">Page n° {{currentPage+1}}</div>
+                        <div style="cursor: pointer;" *ngIf="products.length/10 >= currentPage+1"
+                            (click)="changePage(currentPage+1)">></div>
+                </div>
+            </div>
+        </div>

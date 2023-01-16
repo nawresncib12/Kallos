@@ -1,0 +1,39 @@
+<h1 class="text-5xl mb-6 font-bold text-pink-dark">Orders</h1>
+<div class="flex space-x-2 mb-12 flex-wrap">
+  <app-filter-button
+    status="ALL"
+    (clickEvent)="onChangeStatusFilter($event)"
+    [active]="statusFilter === 'ALL'"
+  ></app-filter-button>
+  <app-filter-button
+    status="Pending"
+    (clickEvent)="onChangeStatusFilter($event)"
+    [active]="statusFilter === 'Pending'"
+  ></app-filter-button>
+  <app-filter-button
+    status="Delivered"
+    (clickEvent)="onChangeStatusFilter($event)"
+    [active]="statusFilter === 'Delivered'"
+  ></app-filter-button>
+  <app-filter-button
+    status="Shipped"
+    (clickEvent)="onChangeStatusFilter($event)"
+    [active]="statusFilter === 'Shipped'"
+  ></app-filter-button>
+  <app-filter-button
+    status="Cancelled"
+    (clickEvent)="onChangeStatusFilter($event)"
+    [active]="statusFilter === 'Cancelled'"
+  ></app-filter-button>
+</div>
+<div *ngFor="let order of filteredOrders" class="w-full">
+  <app-order-card [order]="order"></app-order-card>
+</div>
+<div *ngIf="filteredOrders.length === 0">
+  <p *ngIf="statusFilter === 'ALL'" class="text-2xl text-purple-dark">
+    No orders found.
+  </p>
+  <p *ngIf="statusFilter !== 'ALL'" class="text-2xl text-purple-dark">
+    No {{ statusFilter }} orders found.
+  </p>
+</div>
