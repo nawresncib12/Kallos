@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Order } from 'src/app/data/types';
 import { mockOrders, mockUser } from 'src/app/pages/profile/mock';
+import Order from "../../../model/Order";
 
 @Component({
   selector: 'app-orders',

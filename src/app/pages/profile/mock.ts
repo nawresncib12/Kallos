@@ -5,7 +5,6 @@ import {
   OrderStatus,
   ProfileResponse,
   Role,
-  User,
 } from 'src/app/data/types';
 
 export const mockUser: ExtractData<ProfileResponse> = {
@@ -17,8 +16,6 @@ export const mockUser: ExtractData<ProfileResponse> = {
   address: '1234 Main St',
   phone: '123-456-7890',
   email: 'flen@gmail.com',
-  createdAt: new Date(),
-  updatedAt: new Date(),
   orders: [
     {
       id: 1,
