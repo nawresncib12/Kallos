@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { mockOrders, mockUser } from 'src/app/pages/profile/mock';
-import Order from "../../../model/Order";
+import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, combineLatest, map, Subject } from 'rxjs';
+import { OrdersService } from 'src/app/data/orders.service';
 
 @Component({
   selector: 'app-orders',
@@ -8,19 +8,23 @@ import Order from "../../../model/Order";
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  @Input() orders: Order[] = mockOrders;
-
-  filteredOrders: Order[] = this.orders;
-
-  statusFilter = 'ALL';
+  constructor(private readonly ordersService: OrdersService) {}
+  statusFilter = new BehaviorSubject<string>('ALL');
+  filteredOrders$ = combineLatest([
+    this.ordersService.orders$,
+    this.statusFilter,
+  ]).pipe(
+    map(([orders, status]) => {
+      if (status === 'ALL') {
+        return orders;
+      }
+      return orders.filter((order) => order.status === status);
+    })
+  );
 
   onChangeStatusFilter(status: string): void {
-    this.statusFilter = status;
-    this.filteredOrders = this.orders.filter((order) => {
-      return this.statusFilter === 'ALL' || order.status === this.statusFilter;
-    });
+    this.statusFilter.next(status);
   }
-  constructor() {}
 
   ngOnInit(): void {}
 }

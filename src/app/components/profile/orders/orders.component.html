@@ -3,37 +3,37 @@
   <app-filter-button
     status="ALL"
     (clickEvent)="onChangeStatusFilter($event)"
-    [active]="statusFilter === 'ALL'"
+    [active]="(statusFilter | async) === 'ALL'"
   ></app-filter-button>
   <app-filter-button
     status="Pending"
     (clickEvent)="onChangeStatusFilter($event)"
-    [active]="statusFilter === 'Pending'"
+    [active]="(statusFilter | async) === 'Pending'"
   ></app-filter-button>
   <app-filter-button
     status="Delivered"
     (clickEvent)="onChangeStatusFilter($event)"
-    [active]="statusFilter === 'Delivered'"
+    [active]="(statusFilter | async) === 'Delivered'"
   ></app-filter-button>
   <app-filter-button
     status="Shipped"
     (clickEvent)="onChangeStatusFilter($event)"
-    [active]="statusFilter === 'Shipped'"
+    [active]="(statusFilter | async) === 'Shipped'"
   ></app-filter-button>
   <app-filter-button
     status="Cancelled"
     (clickEvent)="onChangeStatusFilter($event)"
-    [active]="statusFilter === 'Cancelled'"
+    [active]="(statusFilter | async) === 'Cancelled'"
   ></app-filter-button>
 </div>
-<div *ngFor="let order of filteredOrders" class="w-full">
+<div *ngFor="let order of filteredOrders$ | async" class="w-full">
   <app-order-card [order]="order"></app-order-card>
 </div>
-<div *ngIf="filteredOrders.length === 0">
-  <p *ngIf="statusFilter === 'ALL'" class="text-2xl text-purple-dark">
+<div *ngIf="!(filteredOrders$ | async)?.length">
+  <p *ngIf="(statusFilter | async) === 'ALL'" class="text-2xl text-purple-dark">
     No orders found.
   </p>
-  <p *ngIf="statusFilter !== 'ALL'" class="text-2xl text-purple-dark">
-    No {{ statusFilter }} orders found.
+  <p *ngIf="(statusFilter | async) !== 'ALL'" class="text-2xl text-purple-dark">
+    No {{ statusFilter | async }} orders found.
   </p>
 </div>

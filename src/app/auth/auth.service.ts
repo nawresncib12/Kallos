@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import ApiResponse from '../data/ApiResponse';
 
 type LoginResponse = {
   access_token: string;
@@ -29,7 +30,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post<LoginResponse>(`${this.API_URL}/auth/login`, {
+      .post<ApiResponse<LoginResponse>>(`${this.API_URL}/auth/login`, {
         username: email,
         password,
       })
@@ -37,7 +38,7 @@ export class AuthService {
         tap(
           (res) => {
             console.log('Login successful!');
-            localStorage.setItem('token', res.access_token);
+            localStorage.setItem('token', res.data.access_token);
           },
           (err) => console.log(err)
         )

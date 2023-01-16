@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProfileResponse } from 'src/app/data/types';
+import { ProfileResponse, ProfileResponseData } from 'src/app/data/types';
 import { mockUser } from 'src/app/pages/profile/mock';
 
 @Component({
@@ -8,7 +8,7 @@ import { mockUser } from 'src/app/pages/profile/mock';
   styleUrls: ['./info-card.component.scss'],
 })
 export class InfoCardComponent implements OnInit {
-  @Input() user: ProfileResponse['data'] | null = mockUser;
+  @Input() user: ProfileResponseData | null = mockUser;
   constructor() {}
 
   ngOnInit(): void {}
