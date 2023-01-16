@@ -15,6 +15,15 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginFormComponent } from './components/auth/login-form/login-form.component';
 import { RegisterFormComponent } from './components/auth/register-form/register-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { InfoCardComponent } from './components/profile/info-card/info-card.component';
+import { OrdersComponent } from './components/profile/orders/orders.component';
+import { OrderCardComponent } from './components/order-card/order-card.component';
+import { AvatarPipe } from './avatar.pipe';
+import { FilterButtonComponent } from './components/profile/orders/filter-button/filter-button.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,6 +35,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    ProfileComponent,
+    InfoCardComponent,
+    OrdersComponent,
+    OrderCardComponent,
+    AvatarPipe,
+    FilterButtonComponent,
+    ChangePasswordComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
@@ -38,6 +54,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ],
 })
 export class AppModule {}
