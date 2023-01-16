@@ -23,7 +23,7 @@ import { AvatarPipe } from './avatar.pipe';
 import { FilterButtonComponent } from './components/profile/orders/filter-button/filter-button.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './auth.interceptor';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
