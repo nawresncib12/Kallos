@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { mockUser } from './mock';
+import { DataFetcherService } from 'src/app/helpers/fecher/data-fetcher.service';
+import { mockUser, User } from './mock';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +9,11 @@ import { mockUser } from './mock';
 })
 export class ProfileComponent implements OnInit {
   user = mockUser;
-  constructor() {}
+  constructor(private readonly dataFetcher: DataFetcherService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dataFetcher.get<User>('profile').subscribe((res) => {
+      this.user = res;
+    });
+  }
 }

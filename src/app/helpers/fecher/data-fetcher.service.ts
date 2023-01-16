@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { catchError, finalize, Observable, Subject, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,28 +14,32 @@ export class DataFetcherService {
 
   constructor(private http: HttpClient) {}
 
-  get(url: string): Observable<any> {
-    return this.request(url, 'GET');
+  API_URL = environment.API_URL;
+
+  get<T extends Object>(url: string): Observable<T> {
+    return this.request<T>(url, 'GET');
   }
 
-  post(url: string, body: any): Observable<any> {
+  post<T extends Object>(url: string, body: any): Observable<any> {
     return this.request(url, 'POST', body);
   }
 
-  put(url: string, body: any): Observable<any> {
+  put<T extends Object>(url: string, body: any): Observable<any> {
     return this.request(url, 'PUT', body);
   }
 
-  delete(url: string): Observable<any> {
+  delete<T extends Object>(url: string): Observable<any> {
     return this.request(url, 'DELETE');
   }
 
-  request(url: string, method: string, body?: any) {
+  request<T extends Object>(url: string, method: string, body?: any) {
     this.loadingSubject.next(true);
-    return this.http.request(method, url, { body }).pipe(
-      catchError(this.handleError),
-      finalize(() => this.loadingSubject.next(false))
-    );
+    return this.http
+      .request<T>(method, `${this.API_URL}/${url}`, { body })
+      .pipe(
+        catchError(this.handleError),
+        finalize(() => this.loadingSubject.next(false))
+      );
   }
 
   private handleError(error: HttpErrorResponse) {
