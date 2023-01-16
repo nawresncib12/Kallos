@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Order } from 'src/app/pages/profile/mock';
+import { OrdersResponse } from 'src/app/data/types';
 
 @Component({
   selector: 'app-order-card',
@@ -7,7 +7,7 @@ import { Order } from 'src/app/pages/profile/mock';
   styleUrls: ['./order-card.component.scss'],
 })
 export class OrderCardComponent implements OnInit {
-  @Input() order: Order | null = null;
+  @Input() order: OrdersResponse['data'][number] | null = null;
 
   total = 0;
   ngOnChanges(): void {

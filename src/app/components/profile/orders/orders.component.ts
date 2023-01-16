@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { mockUser, Order } from 'src/app/pages/profile/mock';
+import { Order } from 'src/app/data/types';
+import { mockOrders, mockUser } from 'src/app/pages/profile/mock';
 
 @Component({
   selector: 'app-orders',
@@ -7,7 +8,7 @@ import { mockUser, Order } from 'src/app/pages/profile/mock';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  @Input() orders: Order[] = mockUser.orders;
+  @Input() orders: Order[] = mockOrders;
 
   filteredOrders: Order[] = this.orders;
 

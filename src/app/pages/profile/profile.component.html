@@ -7,6 +7,6 @@
   </div>
   <!-- Orders -->
   <div class="py-12 flex-grow px-5 md:px-12">
-    <app-orders [orders]="user.orders"></app-orders>
+    <app-orders [orders]="orders?.data ?? []"></app-orders>
   </div>
 </div>
