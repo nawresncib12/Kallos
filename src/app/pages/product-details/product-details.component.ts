@@ -13,6 +13,7 @@ import {ActivatedRoute} from "@angular/router";
 export class ProductDetailsComponent implements OnInit, OnDestroy {
   selectedImage: number = 0;
   product!: Product;
+  loading: boolean = false
   breadcrumbs!: BreadcrumbsItems;
   private destroyed$ = new Subject<void>()
 
@@ -22,8 +23,12 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.activatedRoute.params.pipe(takeUntil(this.destroyed$)).subscribe(
       params => {
-        const product = this.productDetailsService.getProductById(params["id"]);
-        this.productDetailsService.setProduct(product);
+        this.loading = true;
+        this.productDetailsService.getProductById(params["id"])
+          .subscribe(
+            response => this.productDetailsService.setProduct(response.data),
+            error => (console.log(error)),
+            () => this.loading = false);
       }
     )
 
