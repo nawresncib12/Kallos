@@ -3,21 +3,22 @@
     <div class=" flex flex-wrap  items-center w-4/5">
       <div class=" flex  justify-start  w-1/5  ">
         <img src="assets/images/products/prod1.png" class=" max-h-14  rounded-lg" alt="">
+        <img class="image" [src]="'assets/pics/'+cartElement.product.images[0]" alt="">
 
       </div>
       <div class="w-4/5 ">
-        <h3 class="font-medium leading-tight text-3xl">Salem Hamdani hhhhh</h3>
-        <h6 class="font-medium leading-tight text-base">40x40</h6>
+        <h3 class="font-medium leading-tight text-3xl">{{cartElement.product.name}}</h3>
+        <h6 class="font-medium leading-tight text-base">{{cartElement.product.category}}</h6>
       </div>
 
     </div>
     <div class="flex  items-center justify-end w-1/5 ">
       <div>
         <h4 class="font-medium leading-tight text-2xl">
-          $3,900.00
+          ${{cartElement.product.price}}
         </h4>
         <div class="dot">
-          <div class="dot-text">20</div>
+          <div class="dot-text">{{cartElement.amount}}</div>
         </div>
       </div>
 

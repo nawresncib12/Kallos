@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Category from 'src/app/enums/Category';
 import { Product } from 'src/app/model/Product';
 import { CatalogService } from './catalog.service';
+import {CartService} from "../../helpers/cart/cart.service";
 
 @Component({
   selector: 'app-catalog',
@@ -20,7 +21,8 @@ export class CatalogComponent implements OnInit {
   currentShowenProducts: any[] = []
   onSearch: boolean = false;
   categories = Category
-  constructor(private catalogService: CatalogService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private catalogService: CatalogService, private router: Router, private activatedRoute: ActivatedRoute,
+  private cartService : CartService ) { }
 
   ngOnInit(): void {
     this.changePage(0)

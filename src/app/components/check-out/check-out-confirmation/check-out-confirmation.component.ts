@@ -6,6 +6,9 @@ import User from "../../../model/User";
 import {FetcherService} from "../../../helpers/fetcher/fetcher.service";
 import Order from "../../../model/Order";
 import {CartElement, CartService} from "../../../helpers/cart/cart.service";
+import {OrdersService} from "../../../data/orders.service";
+import {Router} from "@angular/router";
+import {ToasterService} from "../../../helpers/toaster/toaster.service";
 
 @Component({
   selector: 'app-check-out-confirmation',
@@ -20,7 +23,11 @@ export class CheckOutConfirmationComponent implements OnInit, OnDestroy {
 
   private sub: any;
 
-  constructor(private profileService: ProfileService, private fetcher: FetcherService, private cartService: CartService) {
+  loading: boolean = false;
+
+  constructor(private profileService: ProfileService, private fetcher: FetcherService, private cartService: CartService,
+              private orderService: OrdersService, private router: Router,
+              private readonly toasterService: ToasterService) {
 
   }
 
@@ -55,23 +62,29 @@ export class CheckOutConfirmationComponent implements OnInit, OnDestroy {
 
   }
 
-  formatCartElements(cartElement: CartElement[]) {
-    return cartElement.map((el) => {
-      return ({
-        'productId': el.product.id,
-        'quantity': el.amount
-      })
-    })
-  }
 
   onSubmit(form: any) {
-    console.log(form)
-    this.fetcher.post<Order>('/orders', {
-      'orderItems': this.formatCartElements(this.cartService.getFromLocalStorage()),
-      'user': {'id': this.profile?.id},
-      'shippingAddress': form.address
 
-    }).subscribe()
+    this.loading = true;
+    this.orderService.createOrder(
+      form.address, this.profile?.id as number,
+      this.cartService.getFromLocalStorage()).subscribe({
+      next: response => {
+        console.log(response)
+        if (response.isOk()) {
+          this.profileService.getProfile().subscribe();
+          this.toasterService.toaster.success("order created");
+          // this.router.navigate(['/profile']);
+        }
+      },
+      error: (error) => {
+        this.toasterService.toastApiResponse(error.error);
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
+      }
+    });
+
   }
-
 }
