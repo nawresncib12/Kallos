@@ -7,24 +7,12 @@ import {ProductDetailsService} from "../../../../pages/product-details/product-d
   templateUrl: './product-images-previewer.component.html',
   styleUrls: ['./product-images-previewer.component.scss'],
 })
-export class ProductImagesPreviewerComponent implements OnInit {
-  selectedImage: number = 0;
-  images: string[] = [];
-
+export class ProductImagesPreviewerComponent {
   onImageSelected(imageIndex: number) {
     this.productDetailsService.setSelectedImage(imageIndex);
-    window.scrollTo({top: imageIndex * 650})
+    window.scrollTo({top: imageIndex * 750})
   }
 
-  constructor(private productDetailsService: ProductDetailsService) {
-  }
+  constructor(public productDetailsService: ProductDetailsService) {}
 
-  ngOnInit(): void {
-    this.productDetailsService.product.subscribe(
-      product => this.images = product.images
-    )
-    this.productDetailsService.selectedImageIndex.subscribe(
-      selectedImage => this.selectedImage = selectedImage
-    )
-  }
 }

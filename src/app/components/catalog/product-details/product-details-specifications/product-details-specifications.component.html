@@ -1,17 +1,15 @@
-<div class="relative " style="height: 100%">
-  <div class="sticky flex flex-col justify-center top-0" style="height: 100vh">
-    <h1 class="text-5xl uppercase">Native Light Chair</h1>
-    <div class="header-prod__sku t-gt">NL-80X</div>
-    <div class="header-prod__descr">
-      <p>The chair has a classic style characterized by a robust design, composed of tubes with larger dimensions and a
-        high back, making the product more ergonomic.
-        The MDP backrest and the upholstered seat provisde greater user comfort. In addition to being an elegant chair,
-        it
-        has high strength.</p>
-    </div>
-    <div class="header-prod__prices-guides">
-      <div class=" header-prod__prices"><span class="regular-price">$4,990.00</span></div>
-      <div class="header-prod__guide"><a class="recosemi e-upper underline" href="" target="_blank">SIZE GUIDE</a></div>
+<div class="relative" style="height: 100%" *ngIf="productDetailsService.product$  | async as product">
+  <div class="sticky flex flex-col justify-center items-center top-0 mx-3" style="height: 100vh">
+    <div [ngStyle]="{width: '100%', padding: '0 4rem'}">
+      <h1 class="text-7xl uppercase">{{ product.name }}</h1>
+      <div class="category">{{ product.category }}</div>
+      <div class="my-2">
+        <p>{{ product.description }}</p>
+      </div>
+      <div class='font-bold'>{{ product.price }}$</div>
+      <div class="flex justify-center items-center">
+        <app-button [text]="'add to bag'" (click)="addToCart()" [className]="'add-to-cart-btn'"></app-button>
+      </div>
     </div>
   </div>
 </div>

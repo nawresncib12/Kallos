@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Category from 'src/app/enums/Category';
-import { Product } from 'src/app/models/Product';
+import { Product } from 'src/app/model/Product';
 
 @Component({
   selector: 'app-catalog',

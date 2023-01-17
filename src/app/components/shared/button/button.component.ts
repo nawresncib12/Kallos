@@ -10,7 +10,14 @@ export class ButtonComponent implements OnInit {
   @Input() primary: boolean=false
   @Input() color: string="#fff"
   @Input() disabled: boolean = false;
+  @Input() className: string = "";
+  @Input() hoverClasses: string = "";
+  style: object = {}
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!this.className) {
+      this.style = { borderColor: this.color, color: this.color }
+    }
+  }
 }
