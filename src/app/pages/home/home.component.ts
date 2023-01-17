@@ -49,4 +49,4 @@ export class HomeComponent implements OnInit {
   }
   onCategoryClick(category: string) {
     this.router.navigate(['products/category/' + category])
-}
+}}
