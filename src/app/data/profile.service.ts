@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, map, tap } from 'rxjs';
 import { FetcherService } from '../helpers/fetcher/fetcher.service';
+import { ToasterService } from '../helpers/toaster/toaster.service';
 import User from '../model/User';
 import { ProfileResponseData } from './types';
 
@@ -11,7 +12,7 @@ export class ProfileService {
   profile_subject$ = new BehaviorSubject<ProfileResponseData | null>(null);
   profile$ = this.profile_subject$.asObservable();
 
-  constructor(private readonly fetcherService: FetcherService) {}
+  constructor(private readonly fetcherService: FetcherService, private readonly toastService: ToasterService) {}
 
   getProfile() {
     return this.fetcherService.get<ProfileResponseData>('profile').pipe(
@@ -29,6 +30,9 @@ export class ProfileService {
         password: newPassword,
       })
       .pipe(
+        tap((response) => {
+          this.toastService.toastApiResponse(response);
+        }),
         map((response) => {
           this.profile_subject$.next(response.data);
           return response.data;
@@ -40,6 +44,9 @@ export class ProfileService {
     return this.fetcherService
       .post<ProfileResponseData>('profile', profile)
       .pipe(
+        tap((response) => {
+          this.toastService.toastApiResponse(response);
+        }),
         map((response) => {
           this.profile_subject$.next(response.data);
           return response.data;
