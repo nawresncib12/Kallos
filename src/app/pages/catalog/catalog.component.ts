@@ -4,6 +4,7 @@ import Category from 'src/app/enums/Category';
 import {Product} from 'src/app/model/Product';
 import {CatalogService} from './catalog.service';
 import {CartService} from "../../helpers/cart/cart.service";
+import {ToasterService} from "../../helpers/toaster/toaster.service";
 
 @Component({
   selector: 'app-catalog',
@@ -26,7 +27,7 @@ export class CatalogComponent implements OnInit {
   categories = Category
 
   constructor(private catalogService: CatalogService, private router: Router, private activatedRoute: ActivatedRoute,
-              private cartService: CartService) {
+              private cartService: CartService, private toaster: ToasterService) {
   }
 
   ngOnInit(): void {
@@ -118,5 +119,7 @@ export class CatalogComponent implements OnInit {
   addProductToCart(product: Product) {
 
     this.cartService.addToCart(product);
+    this.toaster.toaster.success('product added to cart')
+
   }
 }
