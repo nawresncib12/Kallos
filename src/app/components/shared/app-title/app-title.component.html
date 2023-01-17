@@ -1,5 +1,10 @@
 <div class="flex items-center text-white">
-    <img src="../../../../assets/images/logoWhite.png " class="lg:w-[70px] lg:h-[70px] w-[20px] h-[20px] lg:mr-2 mr-1" alt="logo ">
-    <h1 class="lg:text-8xl text-3xl uppercase">allos
-    </h1>
+  <img
+    src="../../../../assets/images/logoWhite.png "
+    class="lg:w-[70px] lg:h-[70px] w-[20px] h-[20px] mr-1 {{
+      iconSize ? ' lg:w-[20px] lg:h-[20px]' : ''
+    }}"
+    alt="logo "
+  />
+  <h1 class="lg:text-8xl text-2xl uppercase {{ size }}">allos</h1>
 </div>

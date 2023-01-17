@@ -1,0 +1,13 @@
+<div class="navContainer z-40 fixed pt-5">
+  <div>
+    <app-navbar [nav]="nav" (navChange)="close($event)"></app-navbar>
+  </div>
+  <div class="navbar">
+    <app-app-title [size]="'lg:text-2xl'" [iconSize]="'20px'"></app-app-title>
+    <div (click)="showNav()">
+      <div class="outer">
+        <div class="inner"></div>
+      </div>
+    </div>
+  </div>
+</div>

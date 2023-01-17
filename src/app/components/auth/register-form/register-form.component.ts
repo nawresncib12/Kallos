@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 import { passwordMatchValidator } from './password-match.validator';
 
 @Component({
@@ -8,7 +11,10 @@ import { passwordMatchValidator } from './password-match.validator';
   styleUrls: ['./register-form.component.scss'],
 })
 export class RegisterFormComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {}
   registerForm = new FormGroup(
     {
       firstName: new FormControl('', [
@@ -37,8 +43,23 @@ export class RegisterFormComponent implements OnInit {
     console.log(this.registerForm.errors);
     console.log(this.registerForm.get('password')?.errors);
   }
-  onSubmit(): void {
-    console.log(this.registerForm.errors);
+  async onSubmit() {
+    if (this.registerForm.invalid) return;
+
+    const response = await firstValueFrom(
+      this.authService.register({
+        firstName: this.registerForm.value.firstName!,
+        lastName: this.registerForm.value.lastName!,
+        address: this.registerForm.value.address ?? '',
+        email: this.registerForm.value.email!,
+        password: this.registerForm.value.password!,
+      })
+    );
+
+    if (response) {
+      this.router.navigate(['/login']);
+      // TODO: Show success message
+    }
   }
   ngOnInit(): void {}
 }

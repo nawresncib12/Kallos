@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {BreadcrumbsItems} from "../../shared/breadcrumbs/breadcrumbs.component";
 
 @Component({
   selector: 'app-check-out-confirmation',
@@ -7,6 +8,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./check-out-confirmation.component.scss']
 })
 export class CheckOutConfirmationComponent implements OnInit {
+
+  breadcrumbs: BreadcrumbsItems = [{label: 'Cart', link: ['/']}, {label: 'Information'}];
 
   constructor() {
   }
@@ -30,7 +33,6 @@ export class CheckOutConfirmationComponent implements OnInit {
   );
 
   ngOnInit(): void {
-
   }
 
   onSubmit() {

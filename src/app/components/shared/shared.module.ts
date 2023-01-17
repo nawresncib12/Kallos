@@ -6,8 +6,10 @@ import { AppTitleComponent } from './app-title/app-title.component';
 import { ButtonComponent } from './button/button.component';
 import { ScrollDownButtonComponent } from './scroll-down-button/scroll-down-button.component';
 import { HoverClassDirective } from './directives/hover-class.directive';
-
-
+import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarButtonComponent } from './navbar-button/navbar-button.component';
+import { SplashTextComponent } from './splash-text/splash-text.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +17,22 @@ import { HoverClassDirective } from './directives/hover-class.directive';
     AppTitleComponent,
     ButtonComponent,
     ScrollDownButtonComponent,
-    HoverClassDirective  ],
-  imports: [
-    CommonModule,
-    RouterModule
+    HoverClassDirective,
+    NavbarComponent,
+    NavbarButtonComponent,
+    SplashTextComponent,
+    FooterComponent,
   ],
+  imports: [CommonModule, RouterModule],
   exports: [
     BreadcrumbsComponent,
-    AppTitleComponent,ButtonComponent,ScrollDownButtonComponent
-  ]
+    AppTitleComponent,
+    ButtonComponent,
+    ScrollDownButtonComponent,
+    NavbarButtonComponent,
+    NavbarComponent,
+    SplashTextComponent,
+    FooterComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

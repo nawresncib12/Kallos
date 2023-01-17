@@ -1,12 +1,12 @@
-<div
-  class="flex justify-center lg:justify-start flex-wrap min-h-screen bg-pink-light"
->
-  <!-- Profile -->
-  <div class="py-12 px-2 md:px-12 min-h-fit">
-    <app-info-card [user]="user"></app-info-card>
-  </div>
-  <!-- Orders -->
-  <div class="py-12 flex-grow px-5 md:px-12">
-    <app-orders [orders]="orders?.data ?? []"></app-orders>
+<div class="bg-pink-light">
+  <div class="flex justify-center lg:justify-start flex-wrap min-h-screen">
+    <!-- Profile -->
+    <div class="py-12 px-2 md:px-12 min-h-fit w-3/4 md:w-fit">
+      <app-info-card [user]="user$ | async"></app-info-card>
+    </div>
+    <!-- Orders -->
+    <div class="py-12 flex-grow px-5 md:px-12">
+      <app-orders></app-orders>
+    </div>
   </div>
 </div>
