@@ -2,12 +2,7 @@
 <app-values></app-values>
 <app-about></app-about>
 <div *ngFor="let category of categories">
-  <app-product-category
-    [description]="category.description"
-    [dark]="category.dark"
-    [light]="category.light"
-    [tag]="category.tag"
-    [next]="category.id < categories.length ? categories[category.id].tag : ''"
-    [title]="category.title"
-  ></app-product-category>
+  <app-product-category [description]="category.description" [dark]="category.dark" [light]="category.light"
+    [tag]="category.tag" [next]="category.id < categories.length ? categories[category.id].tag : ''"
+    [title]="category.title" (buttonClicked)="onCategoryClick(category.tag)"></app-product-category>
 </div>

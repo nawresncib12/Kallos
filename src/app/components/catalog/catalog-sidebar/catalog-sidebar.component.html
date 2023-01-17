@@ -1,9 +1,22 @@
-<div fxLayout="column" fxLayoutAlign="start center" class="catalog-sidebar h-100">
-    <div class="my-8" style="width: 30px;"><img src="assets/pics/logo.png" alt=""></div>
-    <div *ngFor="let item of categoriesArray">
-        <div class="m-3 ">
-            <img [ngClass]="{'bg-pink': item?.name == categories.MAKEUP,'bg-purple': item?.name == categories.CANDLES, 'bg-blue': item?.name == categories.SCULPTURE
-            ,'bg-gray': item?.name == categories.JEWELRY , 'selected':currentCategory==item}" class="image p-1" (click)="changeCategory(item)"
-                [src]="'assets/pics/'+item.name.toLowerCase()+'.png'" [alt]="item.name">
+<div fxLayout="column" fxLayoutAlign="space-between center" class="catalog-sidebar h-100">
+    <div fxLayout="column" fxLayoutAlign="start center">
+        <div class="my-8" style="width: 30px;"><img src="assets/pics/logo.png" alt=""></div>
+        <div *ngFor="let item of categoriesArray">
+            <div class="m-3 ">
+                <img [ngClass]="{'bg-pink': item?.name == categories.MAKEUP,'bg-purple': item?.name == categories.CANDLES, 'bg-blue': item?.name == categories.SCULPTURE
+            ,'bg-gray': item?.name == categories.JEWELRY , 'selected':currentCategory==item||currentCategory==item?.name}"
+                    class="image p-1" (click)="changeCategory(item)"
+                    [src]="'assets/pics/'+item.name.toLowerCase()+'.png'" [alt]="item.name">
+            </div>
         </div>
     </div>
+    <div class="mb-10" fxLayout="column" fxLayoutAlign="space-between center" style="height: 100px;">
+        <div class="imgContainer">
+            <img class="image2" src="assets/pics/cart.png" alt="">
+        </div>
+        <div class="imgContainer">
+            <img (click)="onSearchActivated()" class="image2" src="assets/pics/search.png" alt="">
+        </div>
+
+    </div>
+</div>
