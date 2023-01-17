@@ -92,4 +92,7 @@ export class CatalogComponent implements OnInit {
   onCartActivated() {
 
   }
+  addProductToCart(item: Product) {
+
+  }
 }
