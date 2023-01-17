@@ -7,7 +7,26 @@
     transition: 0.3s;
 }
 
-.image:hover,.selected {
+.image:hover,
+.selected {
     opacity: 1;
     width: 45px;
+}
+
+.image2 {
+    width: 25px;
+    border-radius: 10px;
+    opacity: 0.5;
+}
+
+.imgContainer {
+    transition: 0.3s;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.imgContainer:hover {
+    background-color: var(--pink-light);
+    width: fit-content;
 }
