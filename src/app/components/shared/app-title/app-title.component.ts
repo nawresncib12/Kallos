@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AppTitleComponent implements OnInit {
   @Input() size: string = '';
   @Input() iconSize: string = '';
+  @Input() color: string = '';
   constructor() {}
 
   ngOnInit(): void {}
