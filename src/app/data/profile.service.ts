@@ -13,7 +13,7 @@ export class ProfileService {
   profile_subject$ = new BehaviorSubject<ProfileResponseData | null>(null);
   profile$ = this.profile_subject$.asObservable();
 
-  constructor(private readonly fetcherService: FetcherService, private readonly toastService: ToasterService, private authService: AuthService) {
+  constructor(private readonly fetcherService: FetcherService, private authService: AuthService) {
   }
 
   getProfile() {
@@ -32,27 +32,15 @@ export class ProfileService {
         currentPassword,
         password: newPassword,
       })
-      .pipe(
-        tap((response) => {
-          this.toastService.toastApiResponse(response);
-        }),
-        map((response) => {
-          this.profile_subject$.next(response.data);
-          return response.data;
-        })
-      );
   }
 
   updateProfile(profile: Partial<User>) {
     return this.fetcherService
       .post<ProfileResponseData>('profile', profile)
       .pipe(
-        tap((response) => {
-          this.toastService.toastApiResponse(response);
-        }),
         map((response) => {
           this.profile_subject$.next(response.data);
-          return response.data;
+          return response;
         })
       );
   }
