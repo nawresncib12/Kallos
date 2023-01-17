@@ -11,11 +11,39 @@
   >
     x
   </div>
-  <h1 class="hover:underline cursor-pointer">Home</h1>
-  <h1 class="hover:underline">Catalogue</h1>
-  <h1 class="hover:underline">Profile</h1>
-  <h1 class="hover:underline">Cart</h1>
-  <h1 class="hover:underline">Login</h1>
-  <h1 class="hover:underline">Register</h1>
-  <h1 class="hover:underline">Logout</h1>
+  <h1 (click)="goToRoute('/')" class="hover:underline cursor-pointer">Home</h1>
+  <h1 (click)="goToRoute('/products')" class="hover:underline cursor-pointer">
+    Catalogue
+  </h1>
+  <h1
+    *ngIf="logged"
+    (click)="goToRoute('/profile')"
+    class="hover:underline cursor-pointer"
+  >
+    Profile
+  </h1>
+  <h1 (click)="goToRoute('/cart')" class="hover:underline cursor-pointer">
+    Cart
+  </h1>
+  <h1
+    *ngIf="!logged"
+    (click)="goToRoute('/login')"
+    class="hover:underline cursor-pointer"
+  >
+    Login
+  </h1>
+  <h1
+    *ngIf="!logged"
+    (click)="goToRoute('/register')"
+    class="hover:underline cursor-pointer"
+  >
+    Register
+  </h1>
+  <h1
+    *ngIf="logged"
+    class="hover:underline cursor-pointer"
+    (click)="onClickLogout()"
+  >
+    Logout
+  </h1>
 </div>

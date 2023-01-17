@@ -12,16 +12,7 @@ import { ProfileService } from 'src/app/data/profile.service';
 export class ProfileComponent implements OnInit {
   user$ = this.profileService.profile$;
 
-  constructor(
-    private readonly profileService: ProfileService,
-    private readonly authService: AuthService,
-    private readonly router: Router
-  ) {}
+  constructor(private readonly profileService: ProfileService) {}
 
   ngOnInit(): void {}
-
-  onClickLogout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
 }
