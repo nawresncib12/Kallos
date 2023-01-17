@@ -8,7 +8,8 @@
       </div>
       <div class='font-bold text-2xl'>{{ product.price }}$</div>
       <div class="flex justify-center items-center">
-        <app-button [text]="'add to bag'" (click)="addToCart()" [className]="'add-to-cart-btn'"></app-button>
+        <app-button *ngIf="cartService.getCartElementIndex(product.id) < 0" [text]="'add to cart'" (click)="addToCart(product)" [className]="'add-to-cart-btn'"></app-button>
+        <app-button *ngIf="cartService.getCartElementIndex(product.id) >= 0" [text]="'remove from cart'" (click)="removeFromCart(product)" [className]="'add-to-cart-btn'"></app-button>
       </div>
     </div>
   </div>

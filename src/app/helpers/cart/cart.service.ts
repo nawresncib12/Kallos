@@ -47,7 +47,8 @@ export class CartService {
     const index = this.getCartElementIndex(id);
     if (index != -1) {
       let newCart = [...this.cartElementsSubject$.value]
-      newCart = newCart.splice(index, 1)
+      newCart = newCart.filter(el => el.product.id != id)
+      console.log(newCart);
       this.passValue(newCart)
       this.addToLocalStorage(newCart)
     }

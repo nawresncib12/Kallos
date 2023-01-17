@@ -1,1 +1,10 @@
 <app-check-out-products-list></app-check-out-products-list>
+<div class="w-full pb-1 flex justify-center items-center" [style.background-color]="'var(--gray-light)'">
+  <app-button
+    [routerLink]="['/checkout']"
+    [className]="'text-2xl bg-transparent border-pink-light border-2 rounded-lg px-4 py-2 text-white font-bold hover:bg-pink-light hover:text-pink-dark transition duration-300 ease-in-out disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400'"
+    type="submit"
+    [text]="'Checkout'"
+  >
+  </app-button>
+</div>
