@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AppTitleComponent } from './app-title/app-title.component';
 import { ButtonComponent } from './button/button.component';
 import { ScrollDownButtonComponent } from './scroll-down-button/scroll-down-button.component';
+import { HoverClassDirective } from './directives/hover-class.directive';
 
 
 
@@ -13,7 +14,8 @@ import { ScrollDownButtonComponent } from './scroll-down-button/scroll-down-butt
     BreadcrumbsComponent,
     AppTitleComponent,
     ButtonComponent,
-    ScrollDownButtonComponent  ],
+    ScrollDownButtonComponent,
+    HoverClassDirective  ],
   imports: [
     CommonModule,
     RouterModule

@@ -1,12 +1,17 @@
-<div [ngStyle]="{ backgroundColor: 'var(--pink-light)',  scrollBehavior: 'smooth'}">
-  <app-breadcrumbs [items]="breadcrumbs"></app-breadcrumbs>
-  <div class="container mx-auto">
-    <div class="grid grid-cols-12 gap-1">
-      <div class="col-span-6 m-1 relative p-4" [ngStyle]="{borderRight: '2px solid #0000001f'}">
-        <app-product-images></app-product-images>
-      </div>
-      <div class="col-span-6 m-1">
-        <app-product-details-specifications></app-product-details-specifications>
+<div [ngStyle]="{ backgroundColor: 'var(--pink-light)'}">
+  <div *ngIf="loading" [ngStyle]="{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}">
+    <div class="loader"></div>
+  </div>
+  <div *ngIf="!loading">
+    <app-breadcrumbs [items]="breadcrumbs"></app-breadcrumbs>
+    <div class="container mx-1">
+      <div class="grid grid-cols-12 gap-1">
+        <div class="col-span-6 m-1 relative p-4" [ngStyle]="{borderRight: '2px solid #0000001f'}">
+          <app-product-images></app-product-images>
+        </div>
+        <div class="col-span-6 m-1">
+          <app-product-details-specifications></app-product-details-specifications>
+        </div>
       </div>
     </div>
   </div>

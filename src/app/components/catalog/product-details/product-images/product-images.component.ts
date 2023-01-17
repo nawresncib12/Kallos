@@ -1,32 +1,17 @@
-import {AfterViewInit, Component, ElementRef, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnChanges, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ProductDetailsService} from "../../../../pages/product-details/product-details.service";
+import {Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-product-images',
   templateUrl: './product-images.component.html',
   styleUrls: ['./product-images.component.scss']
 })
-export class ProductImagesComponent implements OnInit, AfterViewInit {
-  selectedImage: number = 0;
-  images!: string[]
+export class ProductImagesComponent implements AfterViewInit{
   @ViewChild("productImages") imagesList!: ElementRef
   @ViewChild("productImagesPreviewer") imagePreviewer!: ElementRef
 
-  constructor(private productDetailsService: ProductDetailsService) {
-  }
-
-  onImageSelected(selectedImageIndex: number) {
-    this.productDetailsService.setSelectedImage(selectedImageIndex);
-  }
-
-  ngOnInit(): void {
-    this.productDetailsService.product.subscribe(
-      product => this.images = product.images
-    )
-    this.productDetailsService.selectedImageIndex.subscribe(
-      selectedImage => this.selectedImage = selectedImage
-    )
-  }
+  constructor(public productDetailsService: ProductDetailsService) {}
 
   ngAfterViewInit(): void {
     const listItems = this.imagesList.nativeElement.querySelectorAll('li');

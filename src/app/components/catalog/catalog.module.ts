@@ -7,6 +7,7 @@ import { ProductImagesComponent } from './product-details/product-images/product
 import { ProductDetailsSpecificationsComponent } from './product-details/product-details-specifications/product-details-specifications.component';
 import { ProductImagesPreviewerComponent } from './product-details/product-images-previewer/product-images-previewer.component';
 import { MatDividerModule } from '@angular/material/divider';
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -17,12 +18,13 @@ import { MatDividerModule } from '@angular/material/divider';
     ProductDetailsSpecificationsComponent,
     ProductImagesPreviewerComponent
   ],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    MatDividerModule
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatDividerModule,
+        SharedModule
 
-  ],
+    ],
   exports: [
     CatalogElementComponent,
     ProductImagesComponent,
