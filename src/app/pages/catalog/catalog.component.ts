@@ -38,12 +38,14 @@ export class CatalogComponent implements OnInit {
       })
   }
   changeCategory(category: any) {
+    this.currentShowenProducts = this.products.filter((product: Product) => product.category == category)
     if (this.currentCategory == category) {
       this.currentCategory = this.filtersArray[0]
+      this.router.navigate(['products'])
     } else {
       this.currentCategory = category
+      this.router.navigate(['products/category/' + this.currentCategory.toLowerCase()])
     }
-    this.router.navigate(['products/category/' + this.currentCategory.toLowerCase()])
   }
   changePage(pageIndex: number) {
     this.currentShowenProducts = this.products.slice(pageIndex * 10, pageIndex * 10 + 10)
@@ -57,7 +59,6 @@ export class CatalogComponent implements OnInit {
   }
 
   filterProducts(filter: any) {
-    this.currentFilter = filter
     const data = this.products;
     switch (filter) {
       case 0:
@@ -82,6 +83,8 @@ export class CatalogComponent implements OnInit {
     this.onSearch = true;
   }
   performSearch(data: string) {
+    this.changeCategory(this.currentCategory)
+
     this.onSearch = false;
     this.currentShowenProducts = this.products.filter((element: Product) =>
       element.name.includes(data) || element.description.includes(data))
@@ -90,7 +93,6 @@ export class CatalogComponent implements OnInit {
     this.router.navigate(['products/' + id])
   }
   onCartActivated() {
-
   }
   addProductToCart(item: Product) {
 
