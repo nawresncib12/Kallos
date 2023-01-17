@@ -1,0 +1,87 @@
+.navContainer {
+  display: flex;
+  background-color: transparent;
+  width: 100%;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2000;
+}
+
+.navbar {
+  display: flex;
+  padding: 30px 80px;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+}
+
+.navbar .title {
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  pointer-events: auto;
+}
+
+.navbar .outer {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid var(--pink-dark);
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.navbar .inner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--pink-dark);
+  cursor: pointer;
+  position: relative;
+  z-index: 6;
+  pointer-events: auto;
+}
+
+.navbar .outer .inner.opened {
+  transform: scale(100);
+  animation: out 0.5s ease-in;
+}
+
+.navbar .outer .inner.closed {
+  transform: scale(1);
+  animation: in 0.5s ease-in;
+}
+
+.navbar .inner:hover,
+.navbar .outer:hover .inner {
+  transform: scale(0.5);
+  transition: transform 0.3s ease-in;
+}
+
+@keyframes out {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(100);
+  }
+}
+
+@keyframes in {
+  0% {
+    transform: scale(100);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .navbar {
+    padding: 20px 30px;
+  }
+}
