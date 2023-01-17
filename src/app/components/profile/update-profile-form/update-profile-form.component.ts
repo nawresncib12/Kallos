@@ -36,10 +36,6 @@ export class UpdateProfileFormComponent implements OnInit {
         address: this.updateProfileForm.value.address ?? '',
       })
     );
-
-    if (response) {
-      this.toastService.toaster.success('Profile updated successfully');
-    }
   }
 
   onCancelClick() {
