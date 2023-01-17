@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {Product} from "../../model/Product";
-import Category from "../../enums/Category";
-import {HttpClient} from "@angular/common/http";
 import {FetcherService} from "../../helpers/fetcher/fetcher.service";
 import ApiResponse from "../../data/ApiResponse";
 

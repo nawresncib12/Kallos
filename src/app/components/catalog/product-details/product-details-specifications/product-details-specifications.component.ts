@@ -6,10 +6,12 @@ import {ProductDetailsService} from "../../../../pages/product-details/product-d
   templateUrl: './product-details-specifications.component.html',
   styleUrls: ['./product-details-specifications.component.scss']
 })
-export class ProductDetailsSpecificationsComponent implements OnInit {
+export class ProductDetailsSpecificationsComponent {
 
   constructor(public productDetailsService: ProductDetailsService) {}
 
-  ngOnInit(): void {}
+  addToCart() {
+    // add to cart
+  }
 
 }

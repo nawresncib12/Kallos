@@ -13,10 +13,11 @@ export class ToasterService {
   }
 
   toastApiResponse(apiResponse: ApiResponse<any>) {
-    if (apiResponse.isOk()) {
-      this.toaster.success(apiResponse.message?.length ? apiResponse.message : "success")
+    const response = new ApiResponse(apiResponse)
+    if (response.isOk()) {
+      this.toaster.success(response.message?.length ? response.message : "success")
     } else {
-      this.toaster.error(apiResponse.message?.length ? apiResponse.message : "error")
+      this.toaster.error(response.message?.length ? response.message : "an error has occurred")
     }
   }
 

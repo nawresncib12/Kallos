@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'ngx-toastr/toastr';
+
 :root {
     --pink-light: #fee0d9;
     --pink-dark: #cc898b;
@@ -73,4 +75,16 @@ body {
 
 .bgLightPink {
     background-color: var(--pink-light);
+}
+
+.add-to-cart-btn {
+  border: 2px solid black !important;
+  color: black;
+  font-size: 1rem !important;
+  transition: ease-in 0.2s;
+}
+
+.add-to-cart-btn:hover {
+  color: white;
+  background-color: black;
 }
