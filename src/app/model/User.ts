@@ -1,4 +1,4 @@
-import {Role} from "../data/types";
+import {Role} from "../enums/Role";
 
 export default class User {
   id?: number;

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, map, Subject } from 'rxjs';
-import { OrdersService } from 'src/app/data/orders.service';
+import {Component, OnInit} from '@angular/core';
+import {BehaviorSubject, combineLatest, map, Subject} from 'rxjs';
+import {OrdersService} from 'src/app/data/orders.service';
+import {OrderState} from "../../../enums/OrderState";
 
 @Component({
   selector: 'app-orders',
@@ -8,14 +9,19 @@ import { OrdersService } from 'src/app/data/orders.service';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  constructor(private readonly ordersService: OrdersService) {}
-  statusFilter = new BehaviorSubject<string>('ALL');
+  orderStates!: string[];
+
+  constructor(private readonly ordersService: OrdersService) {
+    this.orderStates = (Object.keys(OrderState) as (keyof typeof OrderState)[]).map(key => OrderState[key]);
+  }
+
+  statusFilter = new BehaviorSubject<string>(OrderState.ALL);
   filteredOrders$ = combineLatest([
     this.ordersService.orders$,
     this.statusFilter,
   ]).pipe(
     map(([orders, status]) => {
-      if (status === 'ALL') {
+      if (status === OrderState.ALL) {
         return orders;
       }
       return orders.filter((order) => order.status === status);
@@ -26,5 +32,6 @@ export class OrdersComponent implements OnInit {
     this.statusFilter.next(status);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }

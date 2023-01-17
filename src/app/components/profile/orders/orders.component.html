@@ -1,29 +1,10 @@
 <h1 class="text-5xl mb-6 font-bold text-pink-dark">Orders</h1>
 <div class="flex space-x-2 mb-12 flex-wrap">
   <app-filter-button
-    status="ALL"
+    *ngFor="let orderState of orderStates"
+    [status]="orderState"
     (clickEvent)="onChangeStatusFilter($event)"
-    [active]="(statusFilter | async) === 'ALL'"
-  ></app-filter-button>
-  <app-filter-button
-    status="Pending"
-    (clickEvent)="onChangeStatusFilter($event)"
-    [active]="(statusFilter | async) === 'Pending'"
-  ></app-filter-button>
-  <app-filter-button
-    status="Delivered"
-    (clickEvent)="onChangeStatusFilter($event)"
-    [active]="(statusFilter | async) === 'Delivered'"
-  ></app-filter-button>
-  <app-filter-button
-    status="Shipped"
-    (clickEvent)="onChangeStatusFilter($event)"
-    [active]="(statusFilter | async) === 'Shipped'"
-  ></app-filter-button>
-  <app-filter-button
-    status="Cancelled"
-    (clickEvent)="onChangeStatusFilter($event)"
-    [active]="(statusFilter | async) === 'Cancelled'"
+    [active]="(statusFilter | async) === orderState"
   ></app-filter-button>
 </div>
 <div *ngFor="let order of filteredOrders$ | async" class="w-full">
