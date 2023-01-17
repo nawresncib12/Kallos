@@ -5,23 +5,6 @@ import User from '../model/User';
 
 export type ExtractData<T> = T extends ApiResponse<infer U> ? U : never;
 
-export enum Category {
-  JEWELRY = 'JEWELRY',
-  SCULPTURE = 'SCULPTURE',
-  CANDLES = 'CANDLES',
-  MAKEUP = 'MAKEUP',
-}
-export enum Role {
-  ADMIN = 'admin',
-  USER = 'user',
-}
-export enum OrderStatus {
-  Pending = 'Pending',
-  Shipped = 'Shipped',
-  Delivered = 'Delivered',
-  Cancelled = 'Cancelled',
-}
-
 export type ProfileResponse = ApiResponse<
   User & { orders: Omit<Order, 'orderItems'>[] }
 >;

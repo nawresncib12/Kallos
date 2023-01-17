@@ -1,11 +1,11 @@
 import {
-  Category,
   ExtractData,
   OrdersResponse,
-  OrderStatus,
   ProfileResponse,
-  Role,
 } from 'src/app/data/types';
+import {Role} from "../../enums/Role";
+import {OrderState} from "../../enums/OrderState";
+import Category from "../../enums/Category";
 
 export const mockUser: ExtractData<ProfileResponse> = {
   id: 1,
@@ -22,14 +22,14 @@ export const mockUser: ExtractData<ProfileResponse> = {
       shippingAddress: '1234 Main St',
       note: 'Please deliver ASAP',
       orderDate: new Date(),
-      status: OrderStatus.Pending,
+      status: OrderState.Pending,
     },
     {
       id: 1,
       orderDate: new Date(),
       shippingAddress: '1234 Main St',
       note: 'Please deliver ASAP',
-      status: OrderStatus.Delivered,
+      status: OrderState.Delivered,
     },
   ],
 };
@@ -39,7 +39,7 @@ export const mockOrders: ExtractData<OrdersResponse> = [
     orderDate: new Date(),
     shippingAddress: '1234 Main St',
     note: 'Please deliver ASAP',
-    status: OrderStatus.Pending,
+    status: OrderState.Pending,
     id: 1,
     orderItems: [
       {
