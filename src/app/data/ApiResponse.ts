@@ -4,7 +4,7 @@ export default class ApiResponse<T> {
   data: T;
 
   constructor(apiResponse: Partial<ApiResponse<any>>) {
-    this.status = apiResponse.status ?? 200;
+    this.status = apiResponse.status ?? 500;
     this.message = apiResponse.message ?? "";
     this.data = apiResponse.data ?? null
   }

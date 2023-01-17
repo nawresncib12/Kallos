@@ -6,9 +6,10 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent implements OnInit {
-  @Input() text: string = ""
-  @Input() primary: boolean = false
-  @Input() color: string = "#fff"
+  @Input() text: string=""
+  @Input() loading: boolean = false;
+  @Input() submit: boolean = false;
+  @Input() color: string="#fff"
   @Input() disabled: boolean = false;
   @Input() className: string = "";
   @Input() hoverClasses: string = "";

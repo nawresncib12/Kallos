@@ -30,6 +30,7 @@ import { ApiResponseInterceptor } from './interceptors/api-response.interceptor'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
+import { UpdateProfileFormComponent } from './components/profile/update-profile-form/update-profile-form.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -52,6 +53,7 @@ export function tokenGetter() {
     FilterButtonComponent,
     ChangePasswordComponent,
     CheckOutComponent,
+    UpdateProfileFormComponent,
   ],
   bootstrap: [AppComponent],
   imports: [

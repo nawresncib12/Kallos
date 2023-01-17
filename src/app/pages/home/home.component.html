@@ -1,38 +1,8 @@
 <app-hero></app-hero>
 <app-values></app-values>
 <app-about></app-about>
-
-<app-product-category
-  [dark]="'#413c6a'"
-  [light]="'#c0bce4'"
-  [tag]="'candles'"
-  [next]="'sculpts'"
-  [title]="['Scented', 'Candles']"
-  (buttonClicked)="onCategoryClick('candles')"
-></app-product-category>
-<app-product-category
-  [dark]="'#3aa1ff'"
-  [light]="'#b4dbff'"
-  [tag]="'sculpts'"
-  [next]="'jewelry'"
-  [title]="['Mini', 'Sculpts']"
-  (buttonClicked)="onCategoryClick('sculpture')"
-
-></app-product-category>
-<app-product-category
-  [dark]="'#3c3d3f'"
-  [light]="'#d3dae0'"
-  [tag]="'jewelry'"
-  [next]="'makeup'"
-  [title]="['Pretty', 'Jewerly']"
-  (buttonClicked)="onCategoryClick('jewelry')"
-
-></app-product-category>
-<app-product-category
-  [dark]="'#cc898b'"
-  [light]="'#fee0d9'"
-  [tag]="'makeup'"
-  [title]="['Gorgeous', 'Makeup']"
-  (buttonClicked)="onCategoryClick('makeup')"
-
-></app-product-category>
+<div *ngFor="let category of categories">
+  <app-product-category [description]="category.description" [dark]="category.dark" [light]="category.light"
+    [tag]="category.tag" [next]="category.id < categories.length ? categories[category.id].tag : ''"
+    [title]="category.title" (buttonClicked)="onCategoryClick(category.tag)"></app-product-category>
+</div>

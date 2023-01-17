@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { firstValueFrom } from 'rxjs';
-import { passwordMatchValidator } from 'src/app/components/auth/register-form/password-match.validator';
-import { ProfileService } from 'src/app/data/profile.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {passwordMatchValidator} from 'src/app/components/auth/register-form/password-match.validator';
+import {ProfileService} from 'src/app/data/profile.service';
+import {ToasterService} from "../../helpers/toaster/toaster.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-change-password',
@@ -10,7 +11,13 @@ import { ProfileService } from 'src/app/data/profile.service';
   styleUrls: ['./change-password.component.scss'],
 })
 export class ChangePasswordComponent implements OnInit {
-  constructor(private readonly profileServie: ProfileService) {}
+  loading: boolean = false;
+  constructor(
+    private profileService: ProfileService,
+    private toasterService: ToasterService,
+    private router: Router
+  ) {
+  }
 
   changePasswordForm = new FormGroup(
     {
@@ -30,7 +37,7 @@ export class ChangePasswordComponent implements OnInit {
     [passwordMatchValidator]
   );
 
-  async onSubmit() {
+  onSubmit() {
     if (this.changePasswordForm.invalid) return;
     if (
       !this.changePasswordForm.value.currentPassword ||
@@ -38,18 +45,24 @@ export class ChangePasswordComponent implements OnInit {
       !this.changePasswordForm.value.confirmPassword
     )
       return;
+    this.loading = true;
+    this.profileService.changePassword(
+      this.changePasswordForm.value.currentPassword,
+      this.changePasswordForm.value.password
+    ).subscribe({
+      next: (response) => {
+        if (response.isOk()) {
+          this.toasterService.toastApiResponse(response)
+        }
+      },
+      error: (error) => this.toasterService.toastApiResponse(error.error()),
+      complete: () => {
+        this.loading = false;
+        this.router.navigate(['/profile'])
+      }
+    })
 
-    const response = await firstValueFrom(
-      this.profileServie.changePassword(
-        this.changePasswordForm.value.currentPassword,
-        this.changePasswordForm.value.password
-      )
-    );
 
-    if (response) {
-      this.changePasswordForm.reset();
-      // TODO: Show success message
-    }
   }
 
   ngOnInit(): void {}
