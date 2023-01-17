@@ -1,0 +1,13 @@
+.red {
+    position: relative;
+    z-index: -1;
+}
+
+@keyframes showRed {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
