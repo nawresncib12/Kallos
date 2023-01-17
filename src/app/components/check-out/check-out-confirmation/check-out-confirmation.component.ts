@@ -74,7 +74,7 @@ export class CheckOutConfirmationComponent implements OnInit, OnDestroy {
         if (response.isOk()) {
           this.profileService.getProfile().subscribe();
           this.toasterService.toaster.success("order created");
-          // this.router.navigate(['/profile']);
+          this.router.navigate(['/profile']);
         }
       },
       error: (error) => {
