@@ -39,6 +39,8 @@ export class LoginFormComponent implements OnInit {
     if (response) {
       this.profileService.getProfile().subscribe();
       this.router.navigate(['/profile']);
+    } else {
+      console.log('hi');
     }
   }
 
