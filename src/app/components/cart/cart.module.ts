@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CartComponent } from './cart/cart.component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {CartComponent} from './cart/cart.component';
+import {CheckOutModule} from "../check-out/check-out.module";
 
 
 @NgModule({
@@ -9,7 +9,10 @@ import { CartComponent } from './cart/cart.component';
     CartComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    CheckOutModule
+  ],
+
 })
-export class CartModule { }
+export class CartModule {
+}
