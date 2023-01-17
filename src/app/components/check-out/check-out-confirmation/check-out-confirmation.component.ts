@@ -75,6 +75,8 @@ export class CheckOutConfirmationComponent implements OnInit, OnDestroy {
           this.profileService.getProfile().subscribe();
           this.toasterService.toaster.success("order created");
           this.router.navigate(['/profile']);
+          localStorage.setItem('cart', '[]')
+          this.cartService.passValue([]);
         }
       },
       error: (error) => {
