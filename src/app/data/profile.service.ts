@@ -8,11 +8,10 @@ import { ProfileResponseData } from './types';
   providedIn: 'root',
 })
 export class ProfileService {
-  constructor(private readonly fetcherService: FetcherService) {
-    this.getProfile().subscribe((response) => {
-      console.log(response);
-    });
-  }
+  profile_subject$ = new BehaviorSubject<ProfileResponseData | null>(null);
+  profile$ = this.profile_subject$.asObservable();
+
+  constructor(private readonly fetcherService: FetcherService) {}
 
   getProfile() {
     return this.fetcherService.get<ProfileResponseData>('profile').pipe(
@@ -47,7 +46,4 @@ export class ProfileService {
         })
       );
   }
-
-  profile_subject$ = new BehaviorSubject<ProfileResponseData | null>(null);
-  profile$ = this.profile_subject$.asObservable();
 }

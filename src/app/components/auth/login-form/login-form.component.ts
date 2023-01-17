@@ -30,7 +30,7 @@ export class LoginFormComponent implements OnInit {
     ]),
   });
 
-  async onSubmit() {
+  onSubmit() {
     if (this.loginForm.invalid) return;
     if (!this.loginForm.value.email || !this.loginForm.value.password) return;
 
@@ -42,10 +42,12 @@ export class LoginFormComponent implements OnInit {
       next: response => {
         if (response.isOk()) {
           this.profileService.getProfile().subscribe();
+          this.toasterService.toaster.success("Logged in!");
         }
       },
       error: (error) => {
-        this.toasterService.toastApiResponse(error.error)
+        this.toasterService.toastApiResponse(error.error);
+        this.loading = false;
       },
       complete: () => {
         this.loading = false;
