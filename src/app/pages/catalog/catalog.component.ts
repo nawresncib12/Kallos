@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Category from 'src/app/enums/Category';
 import { Product } from 'src/app/model/Product';
+import { CatalogService } from './catalog.service';
 
 @Component({
   selector: 'app-catalog',
@@ -29,10 +30,11 @@ export class CatalogComponent implements OnInit {
   currentCategory: any = "All products"
   currentPage: number = 0;
   currentShowenProducts: any[] = []
-  constructor() { }
+  constructor(private catalogService: CatalogService) { }
 
   ngOnInit(): void {
     this.changePage(0)
+    this.getAllProducts()
   }
   changeCategory(category: any) {
     this.currentCategory = category
@@ -43,5 +45,10 @@ export class CatalogComponent implements OnInit {
   }
   changeFilter(filter: any) {
     this.currentFilter = filter
+  }
+  getAllProducts() {
+    this.catalogService.getAllProducts().subscribe((response) => {
+      this.products = response.data
+    })
   }
 }
