@@ -18,11 +18,7 @@ export class CartService {
   cartElements$: Observable<CartElement[]> = this.cartElementsSubject$.asObservable();
 
   constructor() {
-    const str = localStorage.getItem('cart') as string;
-    const cart = JSON.parse(str);
-    if (cart && cart.length) {
-      this.passValue(cart as CartElement[])
-    }
+    this.passValue(this.getFromLocalStorage())
   }
 
   getCartElementIndex(id: number): number {
@@ -80,6 +76,16 @@ export class CartService {
 
   addToLocalStorage(cartElements: CartElement[]) {
     const jsonObj = JSON.stringify(cartElements);
-    localStorage.setItem("cart", jsonObj);  }
+    localStorage.setItem("cart", jsonObj);
+  }
+
+  getFromLocalStorage(): CartElement[] {
+    const str = localStorage.getItem('cart') as string;
+    const cart = JSON.parse(str);
+    if (cart && cart.length) {
+      return (cart as CartElement[])
+    }
+    return []
+  }
 
 }

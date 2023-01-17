@@ -1,8 +1,19 @@
 <div class="flex justify-center px-2 h-full" [style.background-color]="'var(--gray-light)'">
-  <div class="flex py-10 w-4/5 flex-col ">
-    <ul class="rounded-lg text-gray-900" >
+  <div class="flex justify-center items-center flex-col" *ngIf="! cart.length">
+    <h3 class="text-5xl font-normal leading-normal mt-0 mb-2 text-pink-light ">YOUR BAG IS EMPTY</h3>
 
-      <app-check-out-products-list-item *ngFor="let cartElement of ((cartService?.cartElements$ | async ) || [])"
+
+    <button
+      class="text-2xl bg-transparent border-pink-light border-2 rounded-lg px-4 py-2 text-white font-bold hover:bg-pink-light hover:text-pink-dark transition duration-300 ease-in-out "
+      [routerLink]="['/products']"
+    >
+      CONTINUE SHOPPING
+    </button>
+  </div>
+  <div class="flex py-10 w-4/5 flex-col" *ngIf="cart.length">
+    <ul class="rounded-lg text-gray-900">
+
+      <app-check-out-products-list-item *ngFor="let cartElement of cart"
                                         [cartElement]="cartElement"></app-check-out-products-list-item>
 
     </ul>

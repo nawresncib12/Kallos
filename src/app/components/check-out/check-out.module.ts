@@ -6,6 +6,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {CheckOutConfirmationComponent} from './check-out-confirmation/check-out-confirmation.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../shared/shared.module";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -20,11 +21,12 @@ import {SharedModule} from "../shared/shared.module";
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
+    RouterModule,
   ],
   exports: [
     CheckOutProductsListComponent,
     CheckOutProductsListItemComponent,
-    CheckOutConfirmationComponent
+    CheckOutConfirmationComponent,
   ]
 })
 export class CheckOutModule {
