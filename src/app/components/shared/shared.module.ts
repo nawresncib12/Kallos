@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
-import { RouterModule } from '@angular/router';
-import { AppTitleComponent } from './app-title/app-title.component';
-import { ButtonComponent } from './button/button.component';
-import { ScrollDownButtonComponent } from './scroll-down-button/scroll-down-button.component';
-import { HoverClassDirective } from './directives/hover-class.directive';
-import { NavbarComponent } from './navbar/navbar.component';
-import { NavbarButtonComponent } from './navbar-button/navbar-button.component';
-import { SplashTextComponent } from './splash-text/splash-text.component';
-import { FooterComponent } from './footer/footer.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BreadcrumbsComponent} from './breadcrumbs/breadcrumbs.component';
+import {RouterModule} from '@angular/router';
+import {AppTitleComponent} from './app-title/app-title.component';
+import {ButtonComponent} from './button/button.component';
+import {ScrollDownButtonComponent} from './scroll-down-button/scroll-down-button.component';
+import {HoverClassDirective} from './directives/hover-class.directive';
+import {NavbarComponent} from './navbar/navbar.component';
+import {NavbarButtonComponent} from './navbar-button/navbar-button.component';
+import {SplashTextComponent} from './splash-text/splash-text.component';
+import {FooterComponent} from './footer/footer.component';
+import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,12 @@ import { FooterComponent } from './footer/footer.component';
     NavbarButtonComponent,
     SplashTextComponent,
     FooterComponent,
+    LoadingSpinnerComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
   exports: [
     BreadcrumbsComponent,
     AppTitleComponent,
@@ -33,6 +38,8 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     SplashTextComponent,
     FooterComponent,
+    LoadingSpinnerComponent
   ],
 })
-export class SharedModule {}
+export class SharedModule {
+}

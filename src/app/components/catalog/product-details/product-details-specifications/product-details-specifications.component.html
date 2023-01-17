@@ -6,7 +6,7 @@
       <div class="my-2">
         <p>{{ product.description }}</p>
       </div>
-      <div class='font-bold'>{{ product.price }}$</div>
+      <div class='font-bold text-2xl'>{{ product.price }}$</div>
       <div class="flex justify-center items-center">
         <app-button [text]="'add to bag'" (click)="addToCart()" [className]="'add-to-cart-btn'"></app-button>
       </div>

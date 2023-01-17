@@ -77,13 +77,15 @@
     </p>
   </div>
   <div class="my-4 w-full">
-    <button
-      class="text-2xl bg-transparent border-pink-light border-2 rounded-lg px-4 py-2 text-white font-bold hover:bg-pink-light hover:text-pink-dark transition duration-300 ease-in-out disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+    <app-button
+      className="text-2xl bg-transparent border-pink-light border-2 rounded-lg px-4 py-2 text-white font-bold hover:bg-pink-light hover:text-pink-dark transition duration-300 ease-in-out disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
       type="submit"
       [disabled]="!registerForm.valid"
+      [loading]="loading"
+      [text]="'Register'"
     >
-      Register
-    </button>
+
+    </app-button>
   </div>
   <div>
     <p class="text-xl text-white">

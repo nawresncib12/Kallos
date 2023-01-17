@@ -4,6 +4,8 @@
   [ngClass]="className"
   [ngStyle]="style"
   [hover-class]="hoverClasses"
+  [type]="submit ? 'submit' : ''"
 >
-  <span>{{ text }}</span>
+  <span *ngIf="!loading">{{ text }}</span>
+  <app-loading-spinner *ngIf="loading" [style]="{fontSize: '2rem'}"></app-loading-spinner>
 </button>
