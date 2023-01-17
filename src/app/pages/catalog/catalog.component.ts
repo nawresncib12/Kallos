@@ -115,7 +115,8 @@ export class CatalogComponent implements OnInit {
     this.router.navigate(['/cart'])
   }
 
-  addProductToCart(item: Product) {
+  addProductToCart(product: Product) {
 
+    this.cartService.addToCart(product);
   }
 }
