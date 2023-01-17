@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { tap } from 'rxjs';
+import {BehaviorSubject, tap} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FetcherService } from '../helpers/fetcher/fetcher.service';
 import User from '../model/User';
@@ -13,6 +13,8 @@ type LoginResponseData = {
   providedIn: 'root',
 })
 export class AuthService {
+  private loggedInSubject = new BehaviorSubject<boolean>(false);
+  loggedIn$ = this.loggedInSubject.asObservable();
   constructor(
     private readonly fetcherService: FetcherService,
     private readonly jwtHelper: JwtHelperService
@@ -20,17 +22,17 @@ export class AuthService {
 
   API_URL = environment.API_URL;
 
-  isLoggedIn() {
-    const token = localStorage.getItem('token');
-    return !this.jwtHelper.isTokenExpired(token);
-  }
-
   getAuthToken() {
     return localStorage.getItem('token');
   }
 
   logout() {
     localStorage.removeItem('token');
+    this.loggedInSubject.next(false);
+  }
+
+  changeLoginState(state: boolean) {
+    this.loggedInSubject.next(state);
   }
 
   login(email: string, password: string) {

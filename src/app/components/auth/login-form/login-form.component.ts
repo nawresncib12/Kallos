@@ -43,6 +43,7 @@ export class LoginFormComponent implements OnInit {
         if (response.isOk()) {
           this.profileService.getProfile().subscribe();
           this.toasterService.toaster.success("Logged in!");
+          this.router.navigate(['/profile']);
         }
       },
       error: (error) => {
@@ -51,7 +52,6 @@ export class LoginFormComponent implements OnInit {
       },
       complete: () => {
         this.loading = false;
-        this.router.navigate(['/profile']);
       }
     });
   }
