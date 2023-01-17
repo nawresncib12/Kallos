@@ -1,5 +1,5 @@
-import {OrderStatus} from "../data/types";
 import OrderItem from "./OrderItem";
+import {OrderState} from "../enums/OrderState";
 
 export default class Order {
   id?: number;
@@ -8,7 +8,7 @@ export default class Order {
 
   orderDate: Date;
 
-  status: OrderStatus;
+  status: OrderState;
 
   shippingAddress: string;
 
@@ -18,7 +18,7 @@ export default class Order {
     this.id = order.id;
     this.orderItems = order.orderItems?.map(orderItem => new OrderItem(orderItem)) ?? [];
     this.orderDate = order.orderDate ? new Date(order.orderDate) : new Date();
-    this.status = order.status ?? OrderStatus.Pending;
+    this.status = order.status ?? OrderState.Pending;
     this.shippingAddress = order.shippingAddress ?? "";
     this.note = order.note ?? ""
   }
