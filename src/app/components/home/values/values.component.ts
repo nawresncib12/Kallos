@@ -1,39 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import Category from 'src/app/enums/Category';
 import { Product } from 'src/app/model/Product';
+import { CatalogService } from 'src/app/pages/catalog/catalog.service';
 @Component({
   selector: 'app-values',
   templateUrl: './values.component.html',
   styleUrls: ['./values.component.scss'],
 })
 export class ValuesComponent implements OnInit {
-  products: Product[] = [
-    {
-      category: Category.CANDLES,
-      images: ['sample2.png'],
-      price: 300,
-      name: 'test',
-      id: 0,
-      description: 'test',
-    },
-    {
-      category: Category.JEWELRY,
-      images: ['sample3.png'],
-      price: 100,
-      name: 'test',
-      id: 0,
-      description: 'test',
-    },
-    {
-      category: Category.MAKEUP,
-      images: ['sample.png'],
-      price: 200,
-      name: 'test',
-      id: 0,
-      description: 'test',
-    },
-  ];
-  constructor() {}
+  products: Product[] = [];
+  constructor(private catalogService: CatalogService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getLatestProducts();
+  }
+  getLatestProducts() {
+    this.catalogService.getLatetsProducts().subscribe((response) => {
+      this.products = response.data;
+    });
+  }
 }

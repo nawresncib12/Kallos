@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import Category from 'src/app/enums/Category';
 //to be moved to shared
 @Component({
@@ -13,6 +13,7 @@ export class CatalogElementComponent implements OnInit {
   @Input() category: string = "makeup";
   @Input() imagePath: string = "sample.png";
   @Input() price: string = "500";
+  @Output() addedToCart = new EventEmitter()
 
   categories = Category;
   onHover: boolean = false;
@@ -20,6 +21,10 @@ export class CatalogElementComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addToCart() {
+    this.addedToCart.emit();
   }
 
 }
