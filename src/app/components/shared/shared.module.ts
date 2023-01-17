@@ -9,6 +9,7 @@ import { HoverClassDirective } from './directives/hover-class.directive';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarButtonComponent } from './navbar-button/navbar-button.component';
 import { SplashTextComponent } from './splash-text/splash-text.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SplashTextComponent } from './splash-text/splash-text.component';
     NavbarComponent,
     NavbarButtonComponent,
     SplashTextComponent,
+    FooterComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -30,6 +32,7 @@ import { SplashTextComponent } from './splash-text/splash-text.component';
     NavbarButtonComponent,
     NavbarComponent,
     SplashTextComponent,
+    FooterComponent,
   ],
 })
 export class SharedModule {}
