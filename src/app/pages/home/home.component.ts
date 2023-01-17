@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import Category from 'src/app/model/Category';
 
 @Component({
@@ -8,7 +9,7 @@ import Category from 'src/app/model/Category';
 })
 export class HomeComponent implements OnInit {
   categories: Category[] = [];
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.categories = [
@@ -46,4 +47,6 @@ export class HomeComponent implements OnInit {
       ),
     ];
   }
-}
+  onCategoryClick(category: string) {
+    this.router.navigate(['products/category/' + category])
+}}

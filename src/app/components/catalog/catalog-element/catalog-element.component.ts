@@ -12,19 +12,24 @@ export class CatalogElementComponent implements OnInit {
   @Input() title: string = "Blue top tak Jacket";
   @Input() category: string = "makeup";
   @Input() imagePath: string = "sample.png";
-  @Input() price: string = "500";
+  @Input() price: string = "unknown";
   @Output() addedToCart = new EventEmitter()
+  @Output() productClicked = new EventEmitter()
+  @Input() isSmall: boolean = true
 
   categories = Category;
   onHover: boolean = false;
-  @Input() isSmall: boolean = true
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  addToCart() {
+  addToCart($event: any) {
     this.addedToCart.emit();
+    $event.stopPropagation()()
   }
+  goToProduct() {
+    this.productClicked.emit()
 
+  }
 }

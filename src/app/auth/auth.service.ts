@@ -18,7 +18,7 @@ export class AuthService {
   constructor(
     private readonly fetcherService: FetcherService,
     private readonly jwtHelper: JwtHelperService
-  ) {}
+  ) { }
 
   API_URL = environment.API_URL;
 

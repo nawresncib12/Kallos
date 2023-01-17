@@ -7,7 +7,9 @@ import { ProductImagesComponent } from './product-details/product-images/product
 import { ProductDetailsSpecificationsComponent } from './product-details/product-details-specifications/product-details-specifications.component';
 import { ProductImagesPreviewerComponent } from './product-details/product-images-previewer/product-images-previewer.component';
 import { MatDividerModule } from '@angular/material/divider';
-import {SharedModule} from "../shared/shared.module";
+import { SharedModule } from "../shared/shared.module";
+import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,21 +18,23 @@ import {SharedModule} from "../shared/shared.module";
     CatalogSidebarComponent,
     ProductImagesComponent,
     ProductDetailsSpecificationsComponent,
-    ProductImagesPreviewerComponent
+    ProductImagesPreviewerComponent,
+    SearchComponent,
   ],
-    imports: [
-        CommonModule,
-        FlexLayoutModule,
-        MatDividerModule,
-        SharedModule
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    MatDividerModule,
+    SharedModule,
+    FormsModule
 
-    ],
+  ],
   exports: [
     CatalogElementComponent,
     ProductImagesComponent,
     ProductDetailsSpecificationsComponent,
     ProductImagesPreviewerComponent,
-    CatalogSidebarComponent
+    CatalogSidebarComponent, SearchComponent
   ]
 
 })

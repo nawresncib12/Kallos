@@ -1,12 +1,12 @@
 <div (mouseenter)="onHover=true" (mouseleave)="onHover=false" class="container m-2 mb-20" fxLayout="column"
-    [ngClass]="{'bigContainer':!isSmall}" fxLayoutAlign="start center">
+    (click)="goToProduct()" [ngClass]="{'bigContainer':!isSmall}" fxLayoutAlign="start center">
     <div [ngClass]="{'bg-pink': category == categories.MAKEUP,'bg-purple': category == categories.CANDLES, 'bg-blue': category == categories.SCULPTURE
     ,'bg-gray': category == categories.JEWELRY}" fxLayout="row" fxLayoutAlign="center center"
         class="content w-100 bg-gray w-10">
         <div class="imageContainer">
-            <img class="image" [src]="'assets/pics/'+imagePath" alt="">
+            <img class="image" [src]="imagePath.includes('http')?imagePath:'assets/pics/'+imagePath" alt="">
         </div>
-        <div (click)="addToCart()" class="cartIcon" [ngClass]="{'bg-pink': category == categories.MAKEUP,'bg-purple': category == categories.CANDLES, 'bg-blue': category == categories.SCULPTURE
+        <div (click)="addToCart($event)" class="cartIcon" [ngClass]="{'bg-pink': category == categories.MAKEUP,'bg-purple': category == categories.CANDLES, 'bg-blue': category == categories.SCULPTURE
         ,'bg-gray': category == categories.JEWELRY,'showCartIcon':onHover}"> <img src="assets/pics/addCart.png" alt="">
         </div>
     </div>
