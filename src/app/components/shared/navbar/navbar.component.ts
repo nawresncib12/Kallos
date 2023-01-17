@@ -31,10 +31,10 @@ export class NavbarComponent implements OnInit {
   }
   onClickLogout() {
     this.authService.logout();
-    this.goToRoute('/login');
+    this.router.navigate(['/login']);
+    this.closeNav();
   }
-  goToRoute(r: string) {
-    this.router.navigate([r]);
+  onClickLink() {
     this.closeNav();
   }
 }

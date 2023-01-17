@@ -39,10 +39,6 @@ export class RegisterFormComponent implements OnInit {
     [passwordMatchValidator]
   );
 
-  onChange(): void {
-    console.log(this.registerForm.errors);
-    console.log(this.registerForm.get('password')?.errors);
-  }
   async onSubmit() {
     if (this.registerForm.invalid) return;
 

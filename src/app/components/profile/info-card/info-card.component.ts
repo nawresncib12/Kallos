@@ -9,6 +9,13 @@ import { mockUser } from 'src/app/pages/profile/mock';
 })
 export class InfoCardComponent implements OnInit {
   @Input() user: ProfileResponseData | null = mockUser;
+
+  showUpdateProfile = false;
+
+  toggleUpdateProfile(): void {
+    this.showUpdateProfile = !this.showUpdateProfile;
+  }
+
   constructor() {}
 
   ngOnInit(): void {}

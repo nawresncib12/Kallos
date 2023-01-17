@@ -1,0 +1,50 @@
+<form [formGroup]="updateProfileForm" (ngSubmit)="onSubmit()" class="w-full">
+  <div class="my-4 w-full">
+    <input
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="First Name"
+      formControlName="firstName"
+      required
+    />
+  </div>
+  <div class="my-4 w-full">
+    <input
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="Last Name"
+      formControlName="lastName"
+      required
+    />
+  </div>
+
+  <div class="my-4 w-full">
+    <textarea
+      lines="3"
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="Address (optional)"
+      formControlName="address"
+    ></textarea>
+  </div>
+  <div class="my-4 w-full">
+    <input
+      class="text-xl px-2 py-2 w-full bg-pink-light"
+      placeholder="Phone"
+      formControlName="phone"
+    />
+  </div>
+
+  <div class="mt-8 mb-4 w-full flex justify-between">
+    <button
+      class="text-2xl bg-transparent border-pink-light border-2 rounded-lg px-4 py-2 text-pink-dark font-bold hover:bg-pink-light hover:text-pink-dark transition duration-300 ease-in-out disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+      type="submit"
+      [disabled]="!updateProfileForm.valid || !updateProfileForm.dirty"
+    >
+      Update
+    </button>
+    <button
+      class="text-2xl text-pink-dark hover:underline"
+      (click)="onCancelClick()"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

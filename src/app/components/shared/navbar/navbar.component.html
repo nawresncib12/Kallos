@@ -11,34 +11,50 @@
   >
     x
   </div>
-  <h1 (click)="goToRoute('/')" class="hover:underline cursor-pointer">Home</h1>
-  <h1 (click)="goToRoute('/products')" class="hover:underline cursor-pointer">
-    Catalogue
-  </h1>
-  <h1
-    *ngIf="logged"
-    (click)="goToRoute('/profile')"
+  <a
+    [routerLink]="'/'"
     class="hover:underline cursor-pointer"
+    (click)="onClickLink()"
+    >Home</a
+  >
+  <a
+    [routerLink]="'/products'"
+    class="hover:underline cursor-pointer"
+    (click)="onClickLink()"
+  >
+    Catalogue
+  </a>
+  <a
+    *ngIf="logged"
+    [routerLink]="'/profile'"
+    class="hover:underline cursor-pointer"
+    (click)="onClickLink()"
   >
     Profile
-  </h1>
-  <h1 (click)="goToRoute('/cart')" class="hover:underline cursor-pointer">
-    Cart
-  </h1>
-  <h1
-    *ngIf="!logged"
-    (click)="goToRoute('/login')"
+  </a>
+  <a
+    [routerLink]="'/cart'"
     class="hover:underline cursor-pointer"
+    (click)="onClickLink()"
+  >
+    Cart
+  </a>
+  <a
+    *ngIf="!logged"
+    [routerLink]="'/login'"
+    class="hover:underline cursor-pointer"
+    (click)="onClickLink()"
   >
     Login
-  </h1>
-  <h1
+  </a>
+  <a
     *ngIf="!logged"
-    (click)="goToRoute('/register')"
+    [routerLink]="'/register'"
     class="hover:underline cursor-pointer"
+    (click)="onClickLink()"
   >
     Register
-  </h1>
+  </a>
   <h1
     *ngIf="logged"
     class="hover:underline cursor-pointer"
