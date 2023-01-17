@@ -1,6 +1,12 @@
-<div class="flex items-center text-white">
+<div
+  class="flex items-center text-white {{ color == 'black' && 'text-black' }}"
+>
   <img
-    src="../../../../assets/images/logoWhite.png "
+    src="{{
+      color == 'black'
+        ? 'assets/pics/logo.png'
+        : '../../../../assets/images/logoWhite.png'
+    }}"
     class="lg:w-[70px] lg:h-[70px] w-[20px] h-[20px] mr-1 {{
       iconSize ? ' lg:w-[20px] lg:h-[20px]' : ''
     }}"
