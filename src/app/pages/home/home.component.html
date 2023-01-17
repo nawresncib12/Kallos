@@ -8,6 +8,7 @@
   [tag]="'candles'"
   [next]="'sculpts'"
   [title]="['Scented', 'Candles']"
+  (buttonClicked)="onCategoryClick('candles')"
 ></app-product-category>
 <app-product-category
   [dark]="'#3aa1ff'"
@@ -15,6 +16,8 @@
   [tag]="'sculpts'"
   [next]="'jewelry'"
   [title]="['Mini', 'Sculpts']"
+  (buttonClicked)="onCategoryClick('sculpture')"
+
 ></app-product-category>
 <app-product-category
   [dark]="'#3c3d3f'"
@@ -22,10 +25,14 @@
   [tag]="'jewelry'"
   [next]="'makeup'"
   [title]="['Pretty', 'Jewerly']"
+  (buttonClicked)="onCategoryClick('jewelry')"
+
 ></app-product-category>
 <app-product-category
   [dark]="'#cc898b'"
   [light]="'#fee0d9'"
   [tag]="'makeup'"
   [title]="['Gorgeous', 'Makeup']"
+  (buttonClicked)="onCategoryClick('makeup')"
+
 ></app-product-category>

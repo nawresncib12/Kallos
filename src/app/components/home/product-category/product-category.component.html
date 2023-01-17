@@ -13,7 +13,7 @@
     <div class="relative h-full border-box flex flex-wrap items-center justify-between">
         <div class="text-4xl text-white flex flex-col h-[50%] justify-center">
             <p class="mb-5 font-bold text-5xl" [ngStyle]="{'color':dark}">Lorem ipsum dolor sit amet, consecte.</p>
-            <app-button [color]="dark" [text]="'Buy now'"></app-button>
+            <app-button (buttonClicked)="onClick()" [color]="dark" [text]="'Buy now'"></app-button>
         </div>
         <div class="h-[50%] w-full flex justify-center">
             <img class="h-full" src="../../../../assets/images/{{tag}}2.png" alt="">

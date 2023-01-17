@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
     this.closing = this.nav;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   closeNav() {
     this.closing = true;
     setTimeout(() => {

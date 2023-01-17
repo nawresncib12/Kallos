@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -6,18 +6,23 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent implements OnInit {
-  @Input() text: string=""
-  @Input() primary: boolean=false
-  @Input() color: string="#fff"
+  @Input() text: string = ""
+  @Input() primary: boolean = false
+  @Input() color: string = "#fff"
   @Input() disabled: boolean = false;
   @Input() className: string = "";
   @Input() hoverClasses: string = "";
+  @Output() buttonClicked = new EventEmitter();
+
   style: object = {}
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     if (!this.className) {
       this.style = { borderColor: this.color, color: this.color }
     }
+  }
+  click() {
+    this.buttonClicked.emit()
   }
 }
