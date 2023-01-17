@@ -2,7 +2,7 @@
   <app-breadcrumbs [items]="breadcrumbs"></app-breadcrumbs>
   <form
     [formGroup]="confirmationForm"
-    (ngSubmit)="onSubmit()"
+    (ngSubmit)="onSubmit(confirmationForm.value)"
     class="w-full"
   >
     <div class="my-4 w-full border-gray-200 border rounded-lg">
@@ -10,6 +10,7 @@
         class="text-xl px-2 py-2 w-full border-gray-200 border rounded-lg"
         placeholder="First Name"
         formControlName="firstName"
+        [value]="profile?.firstName"
         required
       />
     </div>
@@ -18,6 +19,7 @@
         class="text-xl px-2 py-2 w-full border-gray-200 border rounded-lg"
         placeholder="Last Name"
         formControlName="lastName"
+        [value]="profile?.lastName"
         required
       />
     </div>
@@ -25,8 +27,9 @@
     <div class="my-4 w-full">
       <input
         class="text-xl px-2 py-2 w-full border-gray-200 border rounded-lg "
-        placeholder="Address (optional)"
+        placeholder="Address"
         formControlName="address"
+        [value]="profile?.address"
         required
       />
     </div>
@@ -36,6 +39,7 @@
         class="text-xl px-2 py-2 w-full  border-gray-200 border rounded-lg"
         placeholder="Email"
         formControlName="email"
+        [value]="profile?.email"
         email
         required
       />
@@ -57,11 +61,10 @@
         <h5 class="font-medium leading-tight text-xl">< Return to cart</h5>
       </a>
       <button
-        class="text-2xl bg-transparent border-pink-light border-2 rounded-lg px-4 py-2 text-white font-bold hover:bg-pink-light hover:text-pink-dark transition duration-300 ease-in-out disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+        class="text-2xl bg-transparent border-pink-light border-2 rounded-lg px-4 py-2 text-gray-500 font-bold hover:bg-pink-light hover:text-pink-dark transition duration-300 ease-in-out disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
         type="submit"
-        [disabled]="confirmationForm.invalid"
-      >
-        Continue to shipping
+        [disabled]="confirmationForm.invalid" >
+        CONFIRM
       </button>
     </div>
 

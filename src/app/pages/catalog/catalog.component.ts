@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import Category from 'src/app/enums/Category';
-import { Product } from 'src/app/model/Product';
-import { CatalogService } from './catalog.service';
+import {Product} from 'src/app/model/Product';
+import {CatalogService} from './catalog.service';
+import {CartService} from "../../helpers/cart/cart.service";
 
 @Component({
   selector: 'app-catalog',
@@ -11,7 +12,10 @@ import { CatalogService } from './catalog.service';
 })
 export class CatalogComponent implements OnInit {
   title: string = "All Products"
-  filtersArray = [{ id: 0, name: "No filter" }, { id: 1, name: "from - to +" }, { id: 2, name: "from + to -" }, { id: 3, name: "from A to Z" }, { id: 4, name: "from Z to A" },]
+  filtersArray = [{id: 0, name: "No filter"}, {id: 1, name: "from - to +"}, {id: 2, name: "from + to -"}, {
+    id: 3,
+    name: "from A to Z"
+  }, {id: 4, name: "from Z to A"},]
   show: boolean = false
   products: Product[] = []
   currentFilter: any = 0;
@@ -20,7 +24,10 @@ export class CatalogComponent implements OnInit {
   currentShowenProducts: any[] = []
   onSearch: boolean = false;
   categories = Category
-  constructor(private catalogService: CatalogService, private router: Router, private activatedRoute: ActivatedRoute) { }
+
+  constructor(private catalogService: CatalogService, private router: Router, private activatedRoute: ActivatedRoute,
+              private cartService: CartService) {
+  }
 
   ngOnInit(): void {
     this.changePage(0)
@@ -37,6 +44,7 @@ export class CatalogComponent implements OnInit {
         }
       })
   }
+
   changeCategory(category: any) {
     this.currentShowenProducts = this.products.filter((product: Product) => product.category == category)
     if (this.currentCategory == category) {
@@ -47,10 +55,12 @@ export class CatalogComponent implements OnInit {
       this.router.navigate(['products/category/' + this.currentCategory.toLowerCase()])
     }
   }
+
   changePage(pageIndex: number) {
     this.currentShowenProducts = this.products.slice(pageIndex * 10, pageIndex * 10 + 10)
     this.currentPage = pageIndex;
   }
+
   getAllProducts() {
     this.catalogService.getAllProducts().subscribe((response) => {
       this.products = response.data
@@ -71,17 +81,23 @@ export class CatalogComponent implements OnInit {
         this.currentShowenProducts = data.sort((a, b) => b.price - a.price)
         break;
       case 3:
-        this.currentShowenProducts = data.sort((a: Product, b: Product) => { return a.name.localeCompare(b.name) })
+        this.currentShowenProducts = data.sort((a: Product, b: Product) => {
+          return a.name.localeCompare(b.name)
+        })
         break;
       case 4:
-        this.currentShowenProducts = data.sort((a: Product, b: Product) => { return b.name.localeCompare(a.name) })
+        this.currentShowenProducts = data.sort((a: Product, b: Product) => {
+          return b.name.localeCompare(a.name)
+        })
         break;
 
     }
   }
+
   onSearchActivated() {
     this.onSearch = true;
   }
+
   performSearch(data: string) {
     this.changeCategory(this.currentCategory)
 
@@ -89,11 +105,16 @@ export class CatalogComponent implements OnInit {
     this.currentShowenProducts = this.products.filter((element: Product) =>
       element.name.includes(data) || element.description.includes(data))
   }
+
   goToProduct(id: string) {
     this.router.navigate(['products/' + id])
   }
+
   onCartActivated() {
+
+    this.router.navigate(['/cart'])
   }
+
   addProductToCart(item: Product) {
 
   }
