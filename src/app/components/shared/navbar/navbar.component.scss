@@ -1,0 +1,25 @@
+.hide {
+  display: none;
+}
+.show {
+  animation: slideIn 1s ease-in-out;
+}
+.closing {
+  animation: slideOut 1s ease-in-out;
+}
+@keyframes slideIn {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(0vw);
+  }
+}
+@keyframes slideOut {
+  0% {
+    transform: translateX(0vw);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}

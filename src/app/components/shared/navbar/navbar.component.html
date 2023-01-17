@@ -1,0 +1,21 @@
+<div
+  class="p-10 min-h-screen w-full bg-[#CC898B] absolute top-0 left-0 z-50 origin-top-right pointer-events-auto
+ flex flex-col items-center justify-center text-white font-bold text-5xl gap-10 sm:text-6xl   {{
+    !nav ? ' hide' : ' show'
+  }} {{ closing ? ' closing' : ' ' }}
+ "
+>
+  <div
+    (click)="closeNav()"
+    class="absolute top-[20px] right-[50px] text-white font-bold text-6xl cursor-pointer"
+  >
+    x
+  </div>
+  <h1 class="hover:underline cursor-pointer">Home</h1>
+  <h1 class="hover:underline">Catalogue</h1>
+  <h1 class="hover:underline">Profile</h1>
+  <h1 class="hover:underline">Cart</h1>
+  <h1 class="hover:underline">Login</h1>
+  <h1 class="hover:underline">Register</h1>
+  <h1 class="hover:underline">Logout</h1>
+</div>
