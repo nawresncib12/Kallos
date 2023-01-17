@@ -8,6 +8,7 @@ import {RegisterComponent} from './pages/register/register.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {ChangePasswordComponent} from './pages/change-password/change-password.component';
 import {CheckOutComponent} from "./pages/check-out/check-out.component";
+import {CartComponent} from "./components/cart/cart/cart.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckOutComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
   },
 ];
 
