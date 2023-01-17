@@ -1,6 +1,6 @@
 <div [ngStyle]="{ backgroundColor: 'var(--pink-light)'}">
   <div *ngIf="loading" [ngStyle]="{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}">
-    <div class="loader"></div>
+    <app-loading-spinner></app-loading-spinner>
   </div>
   <div *ngIf="!loading">
     <app-breadcrumbs [items]="breadcrumbs"></app-breadcrumbs>

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { firstValueFrom, tap } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
-import { ProfileService } from 'src/app/data/profile.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {firstValueFrom, tap} from 'rxjs';
+import {AuthService} from 'src/app/auth/auth.service';
+import {ProfileService} from 'src/app/data/profile.service';
+import {ToasterService} from "../../../helpers/toaster/toaster.service";
 
 @Component({
   selector: 'app-login-form',
@@ -11,11 +12,15 @@ import { ProfileService } from 'src/app/data/profile.service';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
+  loading: boolean = false;
+
   constructor(
     private readonly authService: AuthService,
     private readonly profileService: ProfileService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private readonly toasterService: ToasterService
+  ) {
+  }
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -29,20 +34,29 @@ export class LoginFormComponent implements OnInit {
     if (this.loginForm.invalid) return;
     if (!this.loginForm.value.email || !this.loginForm.value.password) return;
 
-    const response = await firstValueFrom(
-      this.authService.login(
-        this.loginForm.value.email,
-        this.loginForm.value.password
-      )
-    );
-
-    if (response) {
-      this.profileService.getProfile().subscribe();
-      this.router.navigate(['/profile']);
-    }
+    this.loading = true;
+    this.authService.login(
+      this.loginForm.value.email,
+      this.loginForm.value.password
+    ).subscribe({
+      next: response => {
+        if (response.isOk()) {
+          this.profileService.getProfile().subscribe();
+        }
+      },
+      error: (error) => {
+        this.toasterService.toastApiResponse(error.error)
+      },
+      complete: () => {
+        this.loading = false;
+        this.router.navigate(['/profile']);
+      }
+    });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+  }
 }
