@@ -15,7 +15,6 @@ export class NavbarButtonComponent implements OnInit {
     if (this.nav) document.body.style.overflow = 'hidden';
   }
   close(value: boolean) {
-    console.log('close');
     this.nav = value;
     if (!this.nav) document.body.style.overflow = 'auto';
   }
