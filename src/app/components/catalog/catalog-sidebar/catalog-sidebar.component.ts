@@ -1,33 +1,36 @@
-import { Component, OnInit, Output, EventEmitter,Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import Category from 'src/app/enums/Category';
 
 @Component({
   selector: 'app-catalog-sidebar',
   templateUrl: './catalog-sidebar.component.html',
-  styleUrls: ['./catalog-sidebar.component.scss']
+  styleUrls: ['./catalog-sidebar.component.scss'],
 })
 export class CatalogSidebarComponent implements OnInit {
-  categoriesArray = [{ id: 1, name: Category.CANDLES }, { id: 2, name: Category.JEWELRY }, { id: 3, name: Category.MAKEUP }, { id: 4, name: Category.SCULPTURE },]
-  @Input() currentCategory: any
-  categories = Category
-  @Output() selectCategory = new EventEmitter()
-  @Output() onSearch = new EventEmitter()
-  @Output() onCart = new EventEmitter()
+  categoriesArray: (Category | 'All products')[] = [
+    Category.CANDLES,
+    Category.JEWELRY,
+    Category.MAKEUP,
+    Category.SCULPTURE,
+    'All products',
+  ];
+  @Input() currentCategory: Category | 'All products' = 'All products';
+  categories = Category;
+  @Output() selectCategory = new EventEmitter<Category | 'All products'>();
+  @Output() onSearch = new EventEmitter();
+  @Output() onCart = new EventEmitter();
 
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-  changeCategory(category: any) {
-    this.currentCategory = category
-    this.selectCategory.emit(category.name)
+  ngOnInit(): void {}
+  changeCategory(category: Category | 'All products') {
+    this.currentCategory = category;
+    this.selectCategory.emit(category);
   }
   onSearchActivated() {
-    this.onSearch.emit()
+    this.onSearch.emit();
   }
   onCartActivated() {
-    this.onCart.emit()
+    this.onCart.emit();
   }
-
 }

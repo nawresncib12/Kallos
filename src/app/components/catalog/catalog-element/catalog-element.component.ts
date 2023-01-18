@@ -4,32 +4,29 @@ import Category from 'src/app/enums/Category';
 @Component({
   selector: 'app-catalog-element',
   templateUrl: './catalog-element.component.html',
-  styleUrls: ['./catalog-element.component.scss']
+  styleUrls: ['./catalog-element.component.scss'],
 })
-
-
 export class CatalogElementComponent implements OnInit {
-  @Input() title: string = "Blue top tak Jacket";
-  @Input() category: string = "makeup";
-  @Input() imagePath: string = "sample.png";
-  @Input() price: string = "unknown";
-  @Output() addedToCart = new EventEmitter()
-  @Output() productClicked = new EventEmitter()
-  @Input() isSmall: boolean = true
+  @Input() title: string = 'Blue top tak Jacket';
+  @Input() category: string = 'makeup';
+  @Input() imagePath: string = 'sample.png';
+  @Input() price: string = 'unknown';
+  @Input() isAddedToCart: boolean = false;
+  @Output() addedToCart = new EventEmitter();
+  @Output() productClicked = new EventEmitter();
+  @Input() isSmall: boolean = true;
 
   categories = Category;
   onHover: boolean = false;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   addToCart($event: any) {
     this.addedToCart.emit();
-    $event.stopPropagation()()
+    $event.stopPropagation()();
   }
   goToProduct() {
-    this.productClicked.emit()
-
+    this.productClicked.emit();
   }
 }

@@ -1,72 +1,77 @@
-import {Injectable} from '@angular/core';
-import {Product} from "../../model/Product";
-import {BehaviorSubject, Observable, Subject} from "rxjs";
+import { Injectable } from '@angular/core';
+import { Product } from '../../model/Product';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 export type CartElement = {
-  product: Product,
-  amount: number
-}
+  product: Product;
+  amount: number;
+};
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-
 export class CartService {
-
   private cartElementsSubject$ = new BehaviorSubject<CartElement[]>([]);
-  cartElements$: Observable<CartElement[]> = this.cartElementsSubject$.asObservable();
+  cartElements$: Observable<CartElement[]> =
+    this.cartElementsSubject$.asObservable();
 
   constructor() {
-    this.passValue(this.getFromLocalStorage())
+    this.passValue(this.getFromLocalStorage());
   }
 
   getCartElementIndex(id: number): number {
-    const index = this.cartElementsSubject$.value.findIndex((cartElement: CartElement) => cartElement.product.id == id)
+    const index = this.cartElementsSubject$.value.findIndex(
+      (cartElement: CartElement) => cartElement.product.id == id
+    );
     return index;
   }
 
   decrementProduct(id: number) {
     const index = this.getCartElementIndex(id);
     if (index != -1) {
-      let newCart = [...this.cartElementsSubject$.value]
-      const amount = newCart[index].amount
+      let newCart = [...this.cartElementsSubject$.value];
+      const amount = newCart[index].amount;
       if (amount === 1) {
-        newCart = newCart.splice(index, 1)
+        newCart = newCart.splice(index, 1);
       } else {
-        newCart[index].amount = amount - 1
+        newCart[index].amount = amount - 1;
       }
 
-      this.passValue(newCart)
-      this.addToLocalStorage(newCart)
+      this.passValue(newCart);
+      this.addToLocalStorage(newCart);
     }
-
   }
 
   deleteProduct(id: number) {
     const index = this.getCartElementIndex(id);
     if (index != -1) {
-      let newCart = [...this.cartElementsSubject$.value]
-      newCart = newCart.filter(el => el.product.id != id)
+      let newCart = [...this.cartElementsSubject$.value];
+      newCart = newCart.filter((el) => el.product.id != id);
       console.log(newCart);
-      this.passValue(newCart)
-      this.addToLocalStorage(newCart)
+      this.passValue(newCart);
+      this.addToLocalStorage(newCart);
     }
+  }
+
+  clearCart() {
+    this.passValue([]);
+    this.addToLocalStorage([]);
   }
 
   addToCart(product: Product) {
     const index = this.getCartElementIndex(product.id);
-    let newCart = [...this.cartElementsSubject$.value]
+    let newCart = [...this.cartElementsSubject$.value];
 
     if (index === -1) {
       newCart.push({
-        product, amount: 1
-      })
+        product,
+        amount: 1,
+      });
     } else {
-      newCart[index].amount += 1
+      newCart[index].amount += 1;
     }
-    this.passValue(newCart)
-    this.addToLocalStorage(newCart)
+    this.passValue(newCart);
+    this.addToLocalStorage(newCart);
   }
 
   passValue(cartElements: CartElement[]) {
@@ -74,19 +79,17 @@ export class CartService {
     this.cartElementsSubject$.next(cartElements);
   }
 
-
   addToLocalStorage(cartElements: CartElement[]) {
     const jsonObj = JSON.stringify(cartElements);
-    localStorage.setItem("cart", jsonObj);
+    localStorage.setItem('cart', jsonObj);
   }
 
   getFromLocalStorage(): CartElement[] {
     const str = localStorage.getItem('cart') as string;
     const cart = JSON.parse(str);
     if (cart && cart.length) {
-      return (cart as CartElement[])
+      return cart as CartElement[];
     }
-    return []
+    return [];
   }
-
 }

@@ -1,26 +1,59 @@
-<div class="shadow" [ngClass]="{'show':onSearch}">
-    <div style="width: 100%;height:100%; position:relative;" fxLayout="column" fxLayoutAlign="end center">
-        <div class="searchContainer" fxLayout="column" fxLayoutAlign="start center" [ngClass]="{'show':onSearch}">
-            <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
-                <div class="w-100" fxLayout="row" fxLayoutAlign="start center">
-                    <img class="image" src="assets/pics/whiteSearch.png" alt="">
-                    <div style="color:white; margin: 0 10px; letter-spacing: 3px;">search</div>
-                </div>
-                <div><img (click)="close()" class="imageClose" src="assets/pics/close.png" alt="">
-                </div>
-            </div>
-            <div class="main" fxLayout="column" fxLayoutAlign="center center">
-                <div fxLayout="row" fxLayoutAlign="start center"
-                    style="width: 90%;padding-bottom: 10px; font-size: 18px;">Enter
-                    a keyword to start
-                    your
-                    product search</div>
-                <div style="position: relative;width: 90%;" fxLayout="row" fxLayoutAlign="center center">
-                    <input class="searchInput" placeholder="..." type="text" [(ngModel)]="searchInput">
-                    <img (click)="performSearch()" class="searchImage" src="assets/pics/right-arrow.png" alt="">
-                </div>
-            </div>
-
+<div class="shadow" [ngClass]="{ show: onSearch }">
+  <div
+    style="width: 100%; height: 100%; position: relative"
+    fxLayout="column"
+    fxLayoutAlign="end center"
+  >
+    <div
+      class="searchContainer"
+      fxLayout="column"
+      fxLayoutAlign="start center"
+      [ngClass]="{ show: onSearch }"
+    >
+      <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="w-100" fxLayout="row" fxLayoutAlign="start center">
+          <img class="image" src="assets/pics/whiteSearch.png" alt="" />
+          <div style="color: white; margin: 0 10px; letter-spacing: 3px">
+            search
+          </div>
         </div>
+        <div>
+          <img
+            (click)="close()"
+            class="imageClose"
+            src="assets/pics/close.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="main" fxLayout="column" fxLayoutAlign="center center">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          style="width: 90%; padding-bottom: 10px; font-size: 18px"
+        >
+          Enter a keyword to start your product search
+        </div>
+        <div
+          style="position: relative; width: 90%"
+          fxLayout="row"
+          class="cursor-pointer"
+          fxLayoutAlign="center center"
+        >
+          <input
+            class="searchInput"
+            placeholder="..."
+            type="text"
+            [(ngModel)]="searchInput"
+          />
+          <img
+            (click)="performSearch()"
+            class="searchImage"
+            src="assets/pics/right-arrow.png"
+            alt=""
+          />
+        </div>
+      </div>
     </div>
+  </div>
 </div>

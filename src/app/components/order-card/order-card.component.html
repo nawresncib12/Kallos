@@ -8,7 +8,14 @@
           order.status
         }}</span>
       </p>
-      <button *ngIf="order.status == 'Pending' " class="hover:underline" style="color: red" (click)="cancelOrder()">cancel</button>
+      <button
+        *ngIf="order.status == 'Pending'"
+        class="hover:underline"
+        style="color: red"
+        (click)="cancelOrder()"
+      >
+        cancel
+      </button>
     </div>
     <div *ngFor="let item of order.orderItems">
       <p>
@@ -17,12 +24,12 @@
           {{ item.product.name }} | {{ item.product.category }}
         </span>
         <span class="text-xl opacity-70"
-          >{{ item.product.price * item.quantity }} DT</span
+          >{{ item.product.price * item.quantity }}$</span
         >
       </p>
     </div>
     <div class="flex justify-between mt-4">
-      <p>Total: {{ total }} DT</p>
+      <p>Total: {{ total }}$</p>
       <p>{{ order.orderDate | date }}</p>
     </div>
   </div>
