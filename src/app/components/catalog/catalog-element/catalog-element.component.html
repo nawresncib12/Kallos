@@ -1,22 +1,59 @@
-<div (mouseenter)="onHover=true" (mouseleave)="onHover=false" class="container m-2 mb-20" fxLayout="column"
-    (click)="goToProduct()" [ngClass]="{'bigContainer':!isSmall}" fxLayoutAlign="start center">
-    <div [ngClass]="{'bg-pink': category == categories.MAKEUP,'bg-purple': category == categories.CANDLES, 'bg-blue': category == categories.SCULPTURE
-    ,'bg-gray': category == categories.JEWELRY}" fxLayout="row" fxLayoutAlign="center center"
-        class="content w-100 bg-gray w-10">
-        <div class="imageContainer">
-            <img class="image" [src]="imagePath.includes('http')?imagePath:'assets/pics/'+imagePath" alt="">
-        </div>
-        <div (click)="addToCart($event)" class="cartIcon" [ngClass]="{'bg-pink': category == categories.MAKEUP,'bg-purple': category == categories.CANDLES, 'bg-blue': category == categories.SCULPTURE
-        ,'bg-gray': category == categories.JEWELRY,'showCartIcon':onHover}"> <img src="assets/pics/addCart.png" alt="">
-        </div>
+<div
+  (mouseenter)="onHover = true"
+  (mouseleave)="onHover = false"
+  class="container m-2 mb-20"
+  fxLayout="column"
+  (click)="goToProduct()"
+  [ngClass]="{ bigContainer: !isSmall }"
+  fxLayoutAlign="start center"
+>
+  <div
+    [ngClass]="{
+      'bg-pink': category == categories.MAKEUP,
+      'bg-purple': category == categories.CANDLES,
+      'bg-blue': category == categories.SCULPTURE,
+      'bg-gray': category == categories.JEWELRY
+    }"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    class="content w-100 bg-gray w-10"
+  >
+    <div class="imageContainer">
+      <img
+        class="image"
+        [src]="
+          imagePath.includes('http') ? imagePath : 'assets/pics/' + imagePath
+        "
+        alt=""
+      />
     </div>
-    <div class="details bg-white w-100 font-semibold text-lg" [ngClass]="{'show':onHover,'hide':!onHover}"
-        fxLayout="row" fxLayoutAlign="space-between flex-end">
-        <div class="mx-2" fxLayout="column" fxLayoutAlign="start start">
-            <div style="letter-spacing: 2px" class="text-sm text-gray-900">{{category}}</div>
-            <div>{{title}}</div>
-
-        </div>
-        <div class="mx-2">{{price}}$</div>
+    <button
+      (click)="addToCart($event)"
+      class="cartIcon"
+      [ngClass]="{
+        'bg-pink': category == categories.MAKEUP && !isAddedToCart,
+        'bg-purple': category == categories.CANDLES && !isAddedToCart,
+        'bg-blue': category == categories.SCULPTURE && !isAddedToCart,
+        'bg-gray': category == categories.JEWELRY && !isAddedToCart,
+        showCartIcon: onHover,
+        'bg-pink-dark': isAddedToCart
+      }"
+    >
+      <img src="assets/pics/addCart.png" alt="" />
+    </button>
+  </div>
+  <div
+    class="details bg-white w-100 font-semibold text-lg"
+    [ngClass]="{ show: onHover, hide: !onHover }"
+    fxLayout="row"
+    fxLayoutAlign="space-between flex-end"
+  >
+    <div class="mx-2" fxLayout="column" fxLayoutAlign="start start">
+      <div style="letter-spacing: 2px" class="text-sm text-gray-900">
+        {{ category }}
+      </div>
+      <div>{{ title }}</div>
     </div>
+    <div class="mx-2">{{ price }}$</div>
+  </div>
 </div>

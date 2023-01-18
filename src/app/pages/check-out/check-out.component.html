@@ -1,11 +1,10 @@
-<div class="flex flex-wrap h-full  w-full  pt-20">
-  <div class="w-full lg:w-1/2 bg-light  ">
+<div class="flex flex-wrap min-h-full w-full pt-20">
+  <div class="w-full lg:w-1/2 bg-light">
     <app-check-out-confirmation></app-check-out-confirmation>
   </div>
-  <div class="w-full lg:w-1/2">
-    <app-check-out-products-list></app-check-out-products-list>
+  <div class="w-full lg:w-1/2 overflow-auto">
+    <app-check-out-products-list
+      [showCheckout]="false"
+    ></app-check-out-products-list>
   </div>
 </div>
-
-
-

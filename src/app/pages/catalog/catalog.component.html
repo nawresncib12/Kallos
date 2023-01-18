@@ -1,42 +1,81 @@
 <div class="container" fxLayout="row" fxLayoutAlign="start start">
-    <div class="catalog-sidebar">
-        <app-catalog-sidebar [currentCategory]="currentCategory" (selectCategory)="changeCategory($event)"
-            (onSearch)="onSearchActivated()" (onCart)="onCartActivated()"></app-catalog-sidebar>
-
+  <div class="catalog-sidebar">
+    <app-catalog-sidebar
+      [currentCategory]="currentCategory"
+      (selectCategory)="changeCategory($event)"
+      (onSearch)="onSearchActivated()"
+      (onCart)="onCartActivated()"
+    ></app-catalog-sidebar>
+  </div>
+  <div class="w-100 mt-32 mx-10" fxLayout="column" fxLayoutAlign="start start">
+    <div class="w-100" fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mx-2 font-extrabold" style="font-size: 65px">
+          {{ currentCategory | titlecase }}
+        </div>
+        <div class="mx-2 mt-5 text-gray-400" style="font-size: 15px">
+          {{ currentShownProducts.length }} products
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div *ngFor="let filter of filtersArray" class="mx-2">
+          <div
+            (click)="filterProducts(filter.id)"
+            class="filterItem mx-2 w-100"
+            style="font-size: 15px"
+            [ngClass]="{
+              'text-gray-400': currentFilter !== filter.id,
+              'text-gray-800': currentFilter === filter.id
+            }"
+          >
+            {{ filter.name }}
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="w-100 mt-32 mx-10" fxLayout="column" fxLayoutAlign="start start">
-        <div class="w-100" fxLayout="row wrap" fxLayoutAlign="space-between center">
-            <div fxLayout="row" fxLayoutAlign="start center">
-                <div class="mx-2 font-extrabold" style="font-size: 65px;">{{currentCategory| titlecase }}</div>
-                <div class="mx-2 mt-5 text-gray-400" style="font-size:15px">{{currentShowenProducts.length}} products
-                </div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="start center">
-                <div *ngFor="let filter of filtersArray" class="mx-2">
-                    <div (click)="filterProducts(filter.id)" class="filterItem mx-2 w-100" style="font-size:15px"
-                        [ngClass]="{'text-gray-400':currentFilter !=filter.id}">
-                        {{filter.name}}</div>
-                </div>
 
-            </div>
+    <div
+      class="w-100 mt-12"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-between center"
+    >
+      <div *ngFor="let item of currentShownProducts; let index = index">
+        <app-catalog-element
+          [isSmall]="index % 5 > 2 ? false : true"
+          [category]="item.category"
+          [title]="item.name"
+          [imagePath]="item.images[0]"
+          [price]="'' + item.price"
+          (productClicked)="goToProduct('' + item.id)"
+          (addedToCart)="addProductToCart(item)"
+          [isAddedToCart]="!!(isInCart(item) | async)"
+        ></app-catalog-element>
+      </div>
+    </div>
+    <div class="w-100 my-10" fxLayout="row" fxLayoutAlign="center start">
+      <div style="width: 300px" fxLayout="row" fxLayoutAlign="center start">
+        <div
+          style="cursor: pointer"
+          *ngIf="currentPage != 0"
+          (click)="changePage(currentPage - 1)"
+        >
+          <
         </div>
-
-        <div class="w-100 mt-12 " fxLayout="row wrap" fxLayoutAlign="space-between center">
-            <div *ngFor="let item of currentShowenProducts; let index=index">
-                <app-catalog-element [isSmall]="index%5>2? false:true" [category]="item.category" [title]="item.name"
-                    [imagePath]="item.images[0]" [price]="item.price"
-                    (productClicked)="goToProduct(item.id)" (addedToCart)="addProductToCart(item)"></app-catalog-element>
-
-            </div>
+        <div class="mx-10">Page n° {{ currentPage + 1 }}</div>
+        <div
+          style="cursor: pointer"
+          *ngIf="products.length / 10 >= currentPage + 1"
+          (click)="changePage(currentPage + 1)"
+        >
+          >
         </div>
-        <div class="w-100 my-10" fxLayout="row" fxLayoutAlign="center start">
-            <div style="width: 300px;" fxLayout="row" fxLayoutAlign="center start">
-                <div style="cursor: pointer;" *ngIf="currentPage !=0" (click)="changePage(currentPage-1)">
-                    < </div>
-                        <div class="mx-10">Page n° {{currentPage+1}}</div>
-                        <div style="cursor: pointer;" *ngIf="products.length/10 >= currentPage+1"
-                            (click)="changePage(currentPage+1)">></div>
-                </div>
-            </div>
-        </div>
-        <app-search (search)="performSearch($event)" (onClose)="onSearch=false" [onSearch]="onSearch"> </app-search>
+      </div>
+    </div>
+  </div>
+  <app-search
+    (search)="performSearch($event)"
+    (onClose)="onSearch = false"
+    [onSearch]="onSearch"
+  >
+  </app-search>
+</div>
