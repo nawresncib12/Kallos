@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ExtractData, OrdersResponse} from 'src/app/data/types';
-import {OrdersService} from "../../data/orders.service";
-import {ToasterService} from "../../helpers/toaster/toaster.service";
+import { Component, Input, OnInit } from '@angular/core';
+import { lastValueFrom, Subscription } from 'rxjs';
+import { ExtractData, OrdersResponse } from 'src/app/data/types';
+import { OrdersService } from '../../data/orders.service';
+import { ToasterService } from '../../helpers/toaster/toaster.service';
 
 @Component({
   selector: 'app-order-card',
@@ -10,7 +11,6 @@ import {ToasterService} from "../../helpers/toaster/toaster.service";
 })
 export class OrderCardComponent implements OnInit {
   @Input() order: ExtractData<OrdersResponse>[number] | null = null;
-
   total = 0;
 
   ngOnChanges(): void {
@@ -20,23 +20,27 @@ export class OrderCardComponent implements OnInit {
       }, 0) ?? 0;
   }
 
-  constructor(private orderService: OrdersService, private toasterService: ToasterService) {
-  }
+  constructor(
+    private orderService: OrdersService,
+    private toasterService: ToasterService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   cancelOrder() {
-    const confirm = window.confirm('are you sure that you want to cancel this order');
+    if (!this.order) return;
+    const confirm = window.confirm(
+      'are you sure that you want to cancel this order'
+    );
     if (confirm) {
-      this.orderService.cancelOrder(this.order)?.subscribe({
-        next: response => {
+      lastValueFrom(this.orderService.cancelOrder(this.order))
+        .then((response) => {
           this.toasterService.toastApiResponse(response);
-
-        },
-        error: (error) => this.toasterService.toastApiResponse(error.error)
-      })
+          this.orderService.getOrders().subscribe();
+        })
+        .catch((err) => {
+          this.toasterService.toaster.error(err.error.message);
+        });
     }
   }
-
 }
