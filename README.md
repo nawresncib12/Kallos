@@ -8,7 +8,7 @@ This is the frontend for Kallos, an online Greek gifts store made with Angular.j
 
 ## Presentation Video
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=w26ujmQtsP0">
+  <a href="https://www.youtube.com/watch?v=w26ujmQtsP0" target="_blank">
      <img src="https://img.youtube.com/vi/w26ujmQtsP0/0.jpg"/>
   </a>
 </p>
