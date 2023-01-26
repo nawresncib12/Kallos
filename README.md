@@ -6,6 +6,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This is the frontend for Kallos, an online Greek gifts store made with Angular.js, TypeScript, and Nest.js.
 
+## Presentation Video
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=w26ujmQtsP0">
+     <img src="https://img.youtube.com/vi/w26ujmQtsP0/0.jpg"/>
+  </a>
+</p>
+
 ## Team
 Kallos was made by a team of five people: 
 
